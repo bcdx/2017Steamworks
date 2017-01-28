@@ -1,4 +1,4 @@
-package vision;
+package edu.wpi.first.wpilibj.vision;
 
 import java.io.File;
 import java.io.FileWriter;
