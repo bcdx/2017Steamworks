@@ -1,7 +1,9 @@
 package org.usfirst.frc.team4856.robot.commands;
 import org.usfirst.frc.team4856.robot.Robot;
 
-import edu.wpi.first.wpilibj.CANTalon;
+//WPILIB 2017 no longer supports CANTalon
+//import edu.wpi.first.wpilibj.CANTalon;
+
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -13,10 +15,10 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  *
  */
 public class AutonomousWithShoot extends CommandGroup {
-	CANTalon left1= new CANTalon(0);
-	CANTalon left2= new CANTalon(1);
-	CANTalon right1= new CANTalon(2);
-	CANTalon right2= new CANTalon(3);
+//	CANTalon left1= new CANTalon(0);
+//	CANTalon left2= new CANTalon(1);
+//	CANTalon right1= new CANTalon(2);
+//	CANTalon right2= new CANTalon(3);
 	
     public  AutonomousWithShoot() {
 //    	requires(Robot.shooter);
@@ -27,20 +29,20 @@ public class AutonomousWithShoot extends CommandGroup {
 //   	 long t= System.currentTimeMillis();
 //   	 long end = t+5000;
 //   	 while(System.currentTimeMillis() < end){
-   		 	left1.set(0.45);
-            left2.changeControlMode(CANTalon.TalonControlMode.Follower);
-            left2.set(left1.getDeviceID());
-            right1.set(-0.5);
-            right2.changeControlMode(CANTalon.TalonControlMode.Follower);
-            right2.set(right1.getDeviceID()); 
-//   	 	}   
-            
-            left1.setSafetyEnabled(true); //hopefully will stop motors after 3 sec 2/26 AT
-            right1.setSafetyEnabled(true);
-            left1.setExpiration(3.0);
-            left1.set(0);
-            right1.setExpiration(3.0);
-            right1.set(0);
+//   		 	left1.set(0.45);
+//            left2.changeControlMode(CANTalon.TalonControlMode.Follower);
+//            left2.set(left1.getDeviceID());
+//            right1.set(-0.5);
+//            right2.changeControlMode(CANTalon.TalonControlMode.Follower);
+//            right2.set(right1.getDeviceID()); 
+////   	 	}   
+//            
+//            left1.setSafetyEnabled(true); //hopefully will stop motors after 3 sec 2/26 AT
+//            right1.setSafetyEnabled(true);
+//            left1.setExpiration(3.0);
+//            left1.set(0);
+//            right1.setExpiration(3.0);
+//            right1.set(0);
             
             Robot.shooter.shoot();
         	Timer.delay(3);

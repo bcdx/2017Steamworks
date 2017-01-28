@@ -1,7 +1,10 @@
 package org.usfirst.frc.team4856.robot.commands;
 import org.usfirst.frc.team4856.robot.Robot;
 
-import edu.wpi.first.wpilibj.CANTalon;
+//CAN Talon support package
+import com.ctre.CANTalon;
+
+
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -13,10 +16,10 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 public class AutonomousMode extends CommandGroup {
 
 	
-//	CANTalon left1= new CANTalon(0);
-//	CANTalon left2= new CANTalon(1);
-//	CANTalon right1= new CANTalon(2);
-//	CANTalon right2= new CANTalon(3);
+	CANTalon left1= new CANTalon(0);
+	CANTalon left2= new CANTalon(1);
+	CANTalon right1= new CANTalon(2);
+	CANTalon right2= new CANTalon(3);
 
 	Timer timer;
 	
@@ -90,10 +93,10 @@ public class AutonomousMode extends CommandGroup {
 
     // Called once after isFinished returns true
     protected void end() {    
-        Robot.left1.set(0);
-        Robot.right1.set(0);
-        Robot.left2.set(0);
-        Robot.left2.set(0);
+//        Robot.left1.set(0);
+//        Robot.right1.set(0);
+//        Robot.left2.set(0);
+//        Robot.left2.set(0);
     }
 
     // Called when another command which requires one or more of the same

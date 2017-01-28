@@ -2,7 +2,8 @@ package org.usfirst.frc.team4856.robot;
 
 import java.io.IOException; //from newer GRIP code
 
-import edu.wpi.first.wpilibj.CANTalon;
+//CANTalon support package
+import com.ctre.CANTalon;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
