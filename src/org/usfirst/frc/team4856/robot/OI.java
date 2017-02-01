@@ -3,6 +3,8 @@ package org.usfirst.frc.team4856.robot;
 import edu.wpi.first.wpilibj.Relay;
 //import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import org.usfirst.frc.team4856.robot.commands.*;
+import org.usfirst.frc.team4856.robot.subsystems.*;
 
 
 
@@ -31,18 +33,21 @@ import edu.wpi.first.wpilibj.Joystick;
 public class OI {
 	//declares variables of Joystick type (i.e. lefStick is an instance of Joystick.)
 	//0, 1, and 2 refer to USB ports
-	//uses  ic Joystick leftStick = new Joystick(0);
-	// public Joystick rightStick = new Joystick(1);
-	 public Joystick shooterStick = new Joystick(2); 
+	//uses  ic 
+	public Joystick leftStick = new Joystick(0);
+	public Joystick rightStick = new Joystick(1);
+	public Joystick shooterStick = new Joystick(2); 
 
 	 //public OI() is a constructor of the OI class (defines/intializes the OI class)
 	public OI() {
-	 JoystickButton pickUp = new JoystickButton(shooterStick,3);
+//	 JoystickButton pickUp = new JoystickButton(shooterStick,3);
 // JoystickButton shoot = new JoystickButton(shooterStick,4);
 	// JoystickButton push = new JoystickButton (shooterStick, 2);
-	 JoystickButton shootPush = new JoystickButton (shooterStick,4);
+//	 JoystickButton shootPush = new JoystickButton (shooterStick,4);
 	 JoystickButton scaleUp = new JoystickButton(shooterStick,5);
 	 JoystickButton scaleDown = new JoystickButton (shooterStick, 6);
+//	JoystickButton recieveGear = new JoystickButton (shooterStick, 2);
+//	JoystickButton placeGear = new JoystickButton (shooterStick, 4);
 	 
 //	 JoystickButton pushBall = new JoystickButton(shooterStick, 5);
 	// JoystickButton retreatPusher = new JoystickButton(shooterStick, 6);
@@ -50,9 +55,9 @@ public class OI {
 	 //JoystickButton retract = new JoystickButton (shooterStick, 7); 
 	
 	 //(e.g. when the up button is held, the program runs the LiftElevator command)
-	 pickUp.whileHeld(new BackwardShooter());
+//	 pickUp.whileHeld(new BackwardShooter());
 	// moveShooter.whenPressed(new SetAngleManually());
-	 shootPush.whenPressed(new PushandShoot());
+//	 shootPush.whenPressed(new PushandShoot());
 	 scaleUp.whileHeld(new ScaleUp());
 	 scaleDown.whileHeld(new ScaleDown());
 //	 retreatPusher.whileHeld(new Pull());

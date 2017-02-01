@@ -72,7 +72,7 @@ public class AutonomousMode extends CommandGroup {
     protected void execute() {
     	if (timer.get()<7){
     		Robot.left1.set(0.99);
-    		Robot.right1.set(-0.99);
+    		//Robot.right1.set(-0.99);
     	}
     	else {
     		Robot.shooter.shoot();
