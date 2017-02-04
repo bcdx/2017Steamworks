@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
-
+import edu.wpi.first.wpilibj.vision.GripPipeline;
 
 //import org.usfirst.frc.team4856.robot.commands.TankDriveWithJoysticks;
 
@@ -87,6 +87,7 @@ public class Robot extends IterativeRobot {
 
 			// Mats are very memory expensive. Lets reuse this Mat.
 			Mat mat = new Mat();
+			GripPipeline gp = new GripPipeline();
 
 			// This cannot be 'true'. The program will never exit if it is. This
 			// lets the robot stop this thread when restarting robot code or
@@ -105,7 +106,9 @@ public class Robot extends IterativeRobot {
 						new Scalar(255, 255, 255), 5);
 				// Give the output stream a new image to display
 				outputStream.putFrame(mat);
+				gp.process(mat);
 				System.out.print("mat: " + mat);
+				
 			}
 		});
 		visionThread.setDaemon(true);
