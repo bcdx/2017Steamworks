@@ -22,12 +22,12 @@ public class AutonomousMode extends CommandGroup {
 	CANTalon right2= new CANTalon(3);
 
 	Timer timer;
-	AnalogGyro gyro;
+	//AnalogGyro gyro;
 	
 	
     public AutonomousMode() {
     	timer = new Timer();
-    	gyro = new AnalogGyro(1);
+    	//gyro = new AnalogGyro(1);
     	
 
 //    	requires(Robot.shooter);
@@ -87,21 +87,10 @@ public class AutonomousMode extends CommandGroup {
         	Robot.pusher.stop();
         	end();
     	}*/    	
-    	if (timer.get() < 7){
-    		left1.set(0.365);
-    		left2.set(0.365);
-    		right1.set(0.5);
-    		right2.set(0.5);
-    	}
-    	else {
-    		left1.set(0.365 * 0.866);//cosine of 30 = 0.866
-    		left2.set(0.365 * 0.866);
-    		right1.set(0.5  * 0.5);//sine of 30 = 0.5
-    		right2.set(0.5 * 0.5);
-    	}
-    	while (timer.get() > 7){
-    		System.out.println(gyro.getAngle());
-    	}
+
+//    	while (timer.get() > 1){
+//    		System.out.println(gyro.getAngle());
+//    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -33,8 +33,24 @@ public class AutonomousWithoutGyro extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	if (timer.get() < 7){
+    		left1.set(0.365);
+    		left2.set(0.365);
+    		right1.set(0.5);
+    		right2.set(0.5);
+    	}
     	
+    	left1.set(0.365 * 0.866);//cosine of 30 = 0.866
+    	left2.set(0.365 * 0.866);
+    	right1.set(0.5  * 0.5);//sine of 30 = 0.5
+    	right2.set(0.5 * 0.5);
     	
+    	if (timer.get() > 10) {
+    		left1.set(0.365);
+    		left2.set(0.365);
+    		right1.set(0.5);
+    		right2.set(0.5);
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
