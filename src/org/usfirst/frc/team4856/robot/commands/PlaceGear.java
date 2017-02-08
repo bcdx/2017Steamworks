@@ -2,6 +2,10 @@ package org.usfirst.frc.team4856.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
+import org.usfirst.frc.team4856.robot.Robot;
+import org.usfirst.frc.team4856.robot.subsystems.*;
+
+
 /**
  *
  */
@@ -9,11 +13,12 @@ public class PlaceGear extends Command {
 
     public PlaceGear() {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+        requires(Robot.scoop);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.scoop.up();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -27,6 +32,7 @@ public class PlaceGear extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.scoop.stop();
     }
 
     // Called when another command which requires one or more of the same

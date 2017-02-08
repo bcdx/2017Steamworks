@@ -18,15 +18,15 @@ public class Scoop extends Subsystem {
 		
 	public Scoop () {
 		super();                                                                                                                                                                                      
-		scoopMotor = new Victor(2);
+		scoopMotor = new Victor(3);
 		System.out.println("made victor scoopmotor");
 	}
 	
-	 public void receive() {
+	 public void up() {
 		  scoopMotor.set(0.8);
 	   }
 	 
-	 public void place() {
+	 public void down() {
 		 scoopMotor.set(-0.8);
 		 System.out.println("set motor to -0.5");
 

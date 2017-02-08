@@ -4,7 +4,7 @@ import org.usfirst.frc.team4856.robot.Robot;
 //CAN Talon support package
 import com.ctre.CANTalon;
 
-
+import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -22,10 +22,14 @@ public class AutonomousMode extends CommandGroup {
 	CANTalon right2= new CANTalon(3);
 
 	Timer timer;
+	AnalogGyro gyro;
 	
 	
     public AutonomousMode() {
     	timer = new Timer();
+    	gyro = new AnalogGyro(1);
+    	
+
 //    	requires(Robot.shooter);
 //    	requires(Robot.pusher);
         // Use requires() here to declare subsystem dependencies
@@ -70,7 +74,7 @@ public class AutonomousMode extends CommandGroup {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (timer.get()<7){
+    /*	if (timer.get()<7){
     		Robot.left1.set(0.99);
     		//Robot.right1.set(-0.99);
     	}
@@ -82,21 +86,36 @@ public class AutonomousMode extends CommandGroup {
         	Robot.shooter.stop();
         	Robot.pusher.stop();
         	end();
+    	}*/    	
+    	if (timer.get() < 7){
+    		left1.set(0.365);
+    		left2.set(0.365);
+    		right1.set(0.5);
+    		right2.set(0.5);
+    	}
+    	else {
+    		left1.set(0.365 * 0.866);//cosine of 30 = 0.866
+    		left2.set(0.365 * 0.866);
+    		right1.set(0.5  * 0.5);//sine of 30 = 0.5
+    		right2.set(0.5 * 0.5);
+    	}
+    	while (timer.get() > 7){
+    		System.out.println(gyro.getAngle());
     	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished()
     {
-        return timer.get()>7;
+        return timer.get()>0.1;
     }
 
     // Called once after isFinished returns true
     protected void end() {    
-//        Robot.left1.set(0);
-//        Robot.right1.set(0);
-//        Robot.left2.set(0);
-//        Robot.left2.set(0);
+        Robot.left1.set(0);
+        Robot.right1.set(0);
+        Robot.left2.set(0);
+        Robot.right2.set(0);
     }
 
     // Called when another command which requires one or more of the same

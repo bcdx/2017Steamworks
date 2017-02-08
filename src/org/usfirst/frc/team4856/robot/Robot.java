@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.vision.GripPipeline;
@@ -30,6 +31,7 @@ import org.opencv.imgproc.Imgproc;
 import org.usfirst.frc.team4856.robot.commands.AutonomousMode;
 import org.usfirst.frc.team4856.robot.commands.AutonomousWithShoot;
 import org.usfirst.frc.team4856.robot.subsystems.Pusher;
+import org.usfirst.frc.team4856.robot.subsystems.Gyro;
 import org.usfirst.frc.team4856.robot.subsystems.Scoop;
 
 /**
@@ -61,7 +63,6 @@ public class Robot extends IterativeRobot {
 
 	Joystick leftstick = new Joystick(0);
 	Joystick rightstick = new Joystick(1);
-	double angle = 0;
 
 
 	public static Command autonomousCommand;
@@ -114,10 +115,12 @@ public class Robot extends IterativeRobot {
 		visionThread.setDaemon(true);
 		visionThread.start();
     	
+		
 		shooter = new Shooter();
 		pusher = new Pusher();
 		scaler = new Scaler();
 		scoop = new Scoop();
+		
 		oi = new OI();
 		autonomousCommand = new AutonomousMode(); 
         left2.changeControlMode(CANTalon.TalonControlMode.Follower);
@@ -162,6 +165,7 @@ public class Robot extends IterativeRobot {
     	//if (the autonomousCommand does not return a null set (is not teleop), then run the autonomousCommand
     	 
     	 autonomousCommand.start();
+    	 
     }
 
     @Override //newer GRIP code

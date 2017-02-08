@@ -1,6 +1,8 @@
 package org.usfirst.frc.team4856.robot.commands;
 import org.usfirst.frc.team4856.robot.Robot;
 
+import com.ctre.CANTalon;
+
 //WPILIB 2017 no longer supports CANTalon
 //import edu.wpi.first.wpilibj.CANTalon;
 
@@ -8,19 +10,21 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
-
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
 public class AutonomousWithShoot extends CommandGroup {
-//	CANTalon left1= new CANTalon(0);
-//	CANTalon left2= new CANTalon(1);
-//	CANTalon right1= new CANTalon(2);
-//	CANTalon right2= new CANTalon(3);
+	CANTalon left1= new CANTalon(0);
+	CANTalon left2= new CANTalon(1);
+	CANTalon right1= new CANTalon(2);
+	CANTalon right2= new CANTalon(3);
+	Timer timer;
 	
     public  AutonomousWithShoot() {
+    	timer = new Timer();
+    	
 //    	requires(Robot.shooter);
 //    	requires(Robot.pusher);
     	// Use requires() here to declare subsystem dependencies
@@ -49,19 +53,26 @@ public class AutonomousWithShoot extends CommandGroup {
         	Robot.pusher.push();
         	Timer.delay(2);
         	Robot.shooter.stop();
-        	Robot.pusher.stop();
-            
-            
-          
+        	Robot.pusher.stop();    
     }
     
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	timer.reset();
+    	timer.start();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	if (timer.get() < 7){
+    		left1.set(0.365);
+    		left2.set(0.365);
+    		right1.set(0.5);
+    		right2.set(0.5);
+    	}
+    	else if (timer.get() > 7) {
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
