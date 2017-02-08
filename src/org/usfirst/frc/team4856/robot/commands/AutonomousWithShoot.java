@@ -50,10 +50,10 @@ public class AutonomousWithShoot extends CommandGroup {
             
             Robot.shooter.shoot();
         	Timer.delay(3);
-        	Robot.pusher.push();
+//        	Robot.pusher.push();
         	Timer.delay(2);
         	Robot.shooter.stop();
-        	Robot.pusher.stop();    
+//        	Robot.pusher.stop();    
     }
     
 

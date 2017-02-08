@@ -30,8 +30,8 @@ import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;
 import org.usfirst.frc.team4856.robot.commands.AutonomousMode;
 import org.usfirst.frc.team4856.robot.commands.AutonomousWithShoot;
-import org.usfirst.frc.team4856.robot.subsystems.Pusher;
-import org.usfirst.frc.team4856.robot.subsystems.Gyro;
+//import org.usfirst.frc.team4856.robot.subsystems.Pusher;
+//import org.usfirst.frc.team4856.robot.subsystems.Gyro;
 import org.usfirst.frc.team4856.robot.subsystems.Scoop;
 
 /**
@@ -50,7 +50,7 @@ public class Robot extends IterativeRobot {
 
 	public static OI oi;
 	public static Shooter shooter;
-	public static Pusher pusher;
+//	public static Pusher pusher;
 	public static Scaler scaler;
 	public static Scoop scoop;
 	
@@ -117,7 +117,7 @@ public class Robot extends IterativeRobot {
     	
 		
 		shooter = new Shooter();
-		pusher = new Pusher();
+//		pusher = new Pusher();
 		scaler = new Scaler();
 		scoop = new Scoop();
 		
