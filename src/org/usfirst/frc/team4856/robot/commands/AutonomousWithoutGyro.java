@@ -34,8 +34,8 @@ public class AutonomousWithoutGyro extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if (timer.get() < 7){
-    		left1.set(0.365);
-    		left2.set(0.365);
+    		left1.set(-0.365);
+    		left2.set(-0.365);
     		right1.set(0.5);
     		right2.set(0.5);
     	}
