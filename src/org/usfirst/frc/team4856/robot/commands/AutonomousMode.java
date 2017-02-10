@@ -27,11 +27,8 @@ public class AutonomousMode extends CommandGroup {
 	
     public AutonomousMode() {
     	timer = new Timer();
-<<<<<<< HEAD
 //    	gyro = new AnalogGyro(1);
-=======
     	//gyro = new AnalogGyro(1);
->>>>>>> 7591b2b6c7be9f9be5c0cf1d103052d2cb4814af
     	
 
 //    	requires(Robot.shooter);
@@ -91,7 +88,7 @@ public class AutonomousMode extends CommandGroup {
         	Robot.pusher.stop();
         	end();
     	}*/    	
-<<<<<<< HEAD
+
     	if (timer.get() < 7){
     		left1.set(0.365);
     		left2.set(0.365);
@@ -104,11 +101,9 @@ public class AutonomousMode extends CommandGroup {
     		right1.set(0.5  * 0.5);//sine of 30 = 0.5
     		right2.set(0.5 * 0.5);
     	}
-//    	while (timer.get() > 7){
-=======
+
 
 //    	while (timer.get() > 1){
->>>>>>> 7591b2b6c7be9f9be5c0cf1d103052d2cb4814af
 //    		System.out.println(gyro.getAngle());
 //    	}
     }
