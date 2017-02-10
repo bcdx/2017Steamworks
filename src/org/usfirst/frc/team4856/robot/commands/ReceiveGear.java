@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class ReceiveGear extends Command {
-
+	
     public ReceiveGear() {
         // Use requires() here to declare subsystem dependencies
         requires(Robot.scoop);
@@ -37,5 +37,7 @@ public class ReceiveGear extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
+
     }
 }

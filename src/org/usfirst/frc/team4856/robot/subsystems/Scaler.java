@@ -17,17 +17,17 @@ public class Scaler extends Subsystem {
 		
 	public Scaler () {
 		super();                                                                                                                                                                                      
-		scalerMotor = new Victor (1);
+		scalerMotor = new Victor (3);
 	//hello 1/30/17	
 	}
 	
    public void extend() {
-	   scalerMotor.set(0.5);
+	   scalerMotor.set(0.8);
    }
  
 	
    public void retract () {
-	   scalerMotor.set(-0.5);
+	   scalerMotor.set(-0.8);
 	}
    
    public void stop() {

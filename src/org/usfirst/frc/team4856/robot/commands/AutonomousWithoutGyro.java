@@ -33,8 +33,15 @@ public class AutonomousWithoutGyro extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
-    	
+    	if (timer.get() < 5) {
+    		Robot.left1.set(0.365);
+    		Robot.left2.set(0.365);
+    		Robot.right1.set(0.5);
+    		Robot.right2.set(0.5);
+    	}
+    	else {
+    		Robot.left1.set(0.);
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

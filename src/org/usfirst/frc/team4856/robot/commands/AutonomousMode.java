@@ -27,7 +27,7 @@ public class AutonomousMode extends CommandGroup {
 	
     public AutonomousMode() {
     	timer = new Timer();
-    	gyro = new AnalogGyro(1);
+//    	gyro = new AnalogGyro(1);
     	
 
 //    	requires(Robot.shooter);
@@ -99,9 +99,9 @@ public class AutonomousMode extends CommandGroup {
     		right1.set(0.5  * 0.5);//sine of 30 = 0.5
     		right2.set(0.5 * 0.5);
     	}
-    	while (timer.get() > 7){
-    		System.out.println(gyro.getAngle());
-    	}
+//    	while (timer.get() > 7){
+//    		System.out.println(gyro.getAngle());
+//    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

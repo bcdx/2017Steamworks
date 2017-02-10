@@ -50,7 +50,7 @@ public class Shooter extends PIDSubsystem {
 	
 	public Shooter () {
 		super("Shooter", Kp, Ki, Kd);
-		shooterMotor = new Victor (5);//grabberMotor runs the grabber
+		shooterMotor = new Victor (6);//grabberMotor runs the grabber
 	    angleMotor = new Victor (4);
 		ai = new AnalogInput(1);
 		pot = new AnalogPotentiometer(ai, 265.4, -161.1);

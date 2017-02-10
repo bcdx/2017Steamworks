@@ -1,4 +1,9 @@
 package org.usfirst.frc.team4856.robot.subsystems;
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.SpeedController;
@@ -6,6 +11,11 @@ import edu.wpi.first.wpilibj.Talon;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 
@@ -18,17 +28,15 @@ public class Scoop extends Subsystem {
 		
 	public Scoop () {
 		super();                                                                                                                                                                                      
-		scoopMotor = new Victor(3);
-		System.out.println("made victor scoopmotor");
+		scoopMotor = new Victor (1);
 	}
 	
 	 public void up() {
-		  scoopMotor.set(0.8);
+		  scoopMotor.set(0.9);
 	   }
 	 
 	 public void down() {
-		 scoopMotor.set(-0.8);
-		 System.out.println("set motor to -0.5");
+		 scoopMotor.set(-0.9);
 
 	 }
 	 public void stop() {
