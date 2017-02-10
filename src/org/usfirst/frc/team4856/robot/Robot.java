@@ -59,7 +59,7 @@ public class Robot extends IterativeRobot {
 	public static CANTalon right1= new CANTalon(3);
 	public static CANTalon right2= new CANTalon(4);
 	
-	Thread visionThread;
+//	Thread visionThread;
 
 	Joystick leftstick = new Joystick(0);
 	Joystick rightstick = new Joystick(1);
@@ -75,45 +75,45 @@ public class Robot extends IterativeRobot {
     
     public void robotInit() {
     	
-    	visionThread = new Thread(() -> {
-			// Get the Axis camera from CameraServer
-			AxisCamera camera = CameraServer.getInstance().addAxisCamera("axis-accc8e2708a3.local");
-			// Set the resolution
-			camera.setResolution(640, 480);
-
-			// Get a CvSink. This will capture Mats from the camera
-			CvSink cvSink = CameraServer.getInstance().getVideo();
-			// Setup a CvSource. This will send images back to the Dashboard
-			CvSource outputStream = CameraServer.getInstance().putVideo("Rectangle", 640, 480);
-
-			// Mats are very memory expensive. Lets reuse this Mat.
-			Mat mat = new Mat();
-			GripPipeline gp = new GripPipeline();
-
-			// This cannot be 'true'. The program will never exit if it is. This
-			// lets the robot stop this thread when restarting robot code or
-			// deploying.
-			while (!Thread.interrupted()) {
-				// Tell the CvSink to grab a frame from the camera and put it
-				// in the source mat.  If there is an error notify the output.
-				if (cvSink.grabFrame(mat) == 0) {
-					// Send the output the error.
-					outputStream.notifyError(cvSink.getError());
-					// skip the rest of the current iteration
-					continue;
-				}
-				// Put a rectangle on the image
-				Imgproc.rectangle(mat, new Point(100, 100), new Point(400, 400),
-						new Scalar(255, 255, 255), 5);
-				// Give the output stream a new image to display
-				outputStream.putFrame(mat);
-				gp.process(mat);
-				System.out.print("mat: " + mat);
-				
-			}
-		});
-		visionThread.setDaemon(true);
-		visionThread.start();
+//    	visionThread = new Thread(() -> {
+//			// Get the Axis camera from CameraServer
+//			AxisCamera camera = CameraServer.getInstance().addAxisCamera("axis-accc8e2708a3.local");
+//			// Set the resolution
+//			camera.setResolution(640, 480);
+//
+//			// Get a CvSink. This will capture Mats from the camera
+//			CvSink cvSink = CameraServer.getInstance().getVideo();
+//			// Setup a CvSource. This will send images back to the Dashboard
+//			CvSource outputStream = CameraServer.getInstance().putVideo("Rectangle", 640, 480);
+//
+//			// Mats are very memory expensive. Lets reuse this Mat.
+//			Mat mat = new Mat();
+//			GripPipeline gp = new GripPipeline();
+//
+//			// This cannot be 'true'. The program will never exit if it is. This
+//			// lets the robot stop this thread when restarting robot code or
+//			// deploying.
+//			while (!Thread.interrupted()) {
+//				// Tell the CvSink to grab a frame from the camera and put it
+//				// in the source mat.  If there is an error notify the output.
+//				if (cvSink.grabFrame(mat) == 0) {
+//					// Send the output the error.
+//					outputStream.notifyError(cvSink.getError());
+//					// skip the rest of the current iteration
+//					continue;
+//				}
+//				// Put a rectangle on the image
+//				Imgproc.rectangle(mat, new Point(100, 100), new Point(400, 400),
+//						new Scalar(255, 255, 255), 5);
+//				// Give the output stream a new image to display
+//				outputStream.putFrame(mat);
+//				gp.process(mat);
+//				System.out.print("mat: " + mat);
+//				
+//			}
+//		});
+//		visionThread.setDaemon(true);
+//		visionThread.start();
     	
 		
 		shooter = new Shooter();
