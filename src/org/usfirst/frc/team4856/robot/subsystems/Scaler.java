@@ -17,7 +17,7 @@ public class Scaler extends Subsystem {
 		
 	public Scaler () {
 		super();                                                                                                                                                                                      
-		scalerMotor = new Victor (3);
+		scalerMotor = new Victor(1);
 	//hello 1/30/17	
 	}
 	

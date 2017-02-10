@@ -28,7 +28,7 @@ public class Scoop extends Subsystem {
 		
 	public Scoop () {
 		super();                                                                                                                                                                                      
-		scoopMotor = new Victor (1);
+		scoopMotor = new Victor(3);
 	}
 	
 	 public void up() {
