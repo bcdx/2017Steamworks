@@ -46,8 +46,8 @@ public class AutonomousWithoutGyro extends Command {
     	right2.set(0.5 * 0.5);
     	
     	if (timer.get() > 10) {
-    		left1.set(0.365);
-    		left2.set(0.365);
+    		left1.set(-0.365);
+    		left2.set(-0.365);
     		right1.set(0.5);
     		right2.set(0.5);
     	}

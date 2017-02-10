@@ -224,11 +224,4 @@ public class Robot extends IterativeRobot {
     	//scoop.place();
     }
     
-    /**
-     * This function is called periodically during test mode
-     */
-    public void testPeriodic() {
-        LiveWindow.run();
-    }
 }
-
