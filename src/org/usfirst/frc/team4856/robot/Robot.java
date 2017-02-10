@@ -59,7 +59,11 @@ public class Robot extends IterativeRobot {
 	public static CANTalon right1= new CANTalon(3);
 	public static CANTalon right2= new CANTalon(4);
 	
+<<<<<<< HEAD
 	//Thread visionThread;
+=======
+//	Thread visionThread;
+>>>>>>> 7591b2b6c7be9f9be5c0cf1d103052d2cb4814af
 
 	Joystick leftstick = new Joystick(0);
 	Joystick rightstick = new Joystick(1);
@@ -75,7 +79,11 @@ public class Robot extends IterativeRobot {
     
     
     public void robotInit() {
+<<<<<<< HEAD
 //    	
+=======
+    	
+>>>>>>> 7591b2b6c7be9f9be5c0cf1d103052d2cb4814af
 //    	visionThread = new Thread(() -> {
 //			// Get the Axis camera from CameraServer
 //			AxisCamera camera = CameraServer.getInstance().addAxisCamera("axis-accc8e2708a3.local");
@@ -226,11 +234,4 @@ public class Robot extends IterativeRobot {
     	
     }
     
-    /**
-     * This function is called periodically during test mode
-     */
-    public void testPeriodic() {
-        LiveWindow.run();
-    }
 }
-
