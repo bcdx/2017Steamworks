@@ -28,7 +28,6 @@ public class AutonomousMode extends CommandGroup {
     public AutonomousMode() {
     	timer = new Timer();
 //    	gyro = new AnalogGyro(1);
-    	//gyro = new AnalogGyro(1);
     	
 
 //    	requires(Robot.shooter);
