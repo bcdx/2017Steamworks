@@ -33,7 +33,6 @@ public class Gyro extends Subsystem {
     	gyro.reset();
     	while (gyro.getAngle() < 30) {
     		double turningValue = 30 * 0.005; //0.005 is proportional turning constant.
-    		myRobot.
     	}
     }
 }
