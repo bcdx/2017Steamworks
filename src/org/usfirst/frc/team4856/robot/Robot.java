@@ -144,7 +144,7 @@ public class Robot extends IterativeRobot {
 	//	shooter = new Shooter();
 //		pusher = new Pusher();
 		//scaler = new Scaler();
-		scoop = new Scoop();
+		scoop = new Scoop(3);
 		scaler = new Scaler();
 		
 		
