@@ -28,19 +28,15 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 public class Scoop extends Subsystem {
 	private SpeedController scoopMotor;
 	
-	DigitalInput limitswitch1;
-	DigitalInput limitswitch2;
 //    SpeedController armMotor = new Victor(1);
     Counter counter1;
     Counter counter2;
 		
-	public Scoop (int pwm_port,int dio_port1,int dio_port2) {
+	public Scoop (int pwm_port, Counter limitswitch1, Counter limitswitch2) {
 		super();                                                                                                                                                                                      
 		scoopMotor = new Victor(pwm_port);
-		limitswitch1 = new DigitalInput(dio_port1);
-		limitswitch2 = new DigitalInput(dio_port2);
-		counter1 = new Counter(limitswitch1);
-		counter2 = new Counter(limitswitch2);
+		counter1 = limitswitch1;
+		counter2 = limitswitch2;
 		
 	}
 	

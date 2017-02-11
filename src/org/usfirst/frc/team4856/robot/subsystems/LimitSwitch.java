@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4856.robot.subsystems;
 
+import edu.wpi.first.wpilibj.Counter;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -7,11 +8,14 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class LimitSwitch extends Subsystem {
-	private DigitalInput lSwitch;
+	DigitalInput limitswitch;
+	Counter counter;
 	
 	public LimitSwitch (int dio_port){
 		super();
-		lSwitch = new DigitalInput(dio_port);
+//		lSwitch = new DigitalInput(dio_port);
+		limitswitch = new DigitalInput(dio_port);
+		counter = new Counter(limitswitch);
 	}
 
 
