@@ -20,6 +20,7 @@ import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.vision.GripPipeline;
+import edu.wpi.first.wpilibj.Counter;
 
 //import org.usfirst.frc.team4856.robot.commands.TankDriveWithJoysticks;
 
@@ -33,7 +34,7 @@ import org.usfirst.frc.team4856.robot.commands.AutonomousMode;
 import org.usfirst.frc.team4856.robot.commands.AutonomousWithShoot;
 //import org.usfirst.frc.team4856.robot.subsystems.Pusher;
 //import org.usfirst.frc.team4856.robot.subsystems.Gyro;
-import org.usfirst.frc.team4856.robot.subsystems.Scoop;
+import org.usfirst.frc.team4856.robot.subsystems.*;
 
 /**
  * The VM (virtual machine) is configured to automatically run this class, and to call the
@@ -143,7 +144,14 @@ public class Robot extends IterativeRobot {
 	//	shooter = new Shooter();
 //		pusher = new Pusher();
 		//scaler = new Scaler();
-		scoop = new Scoop(3, 1, 2);
+		
+		LimitSwitch limitswitch1 = new LimitSwitch(1);
+		LimitSwitch limitswitch2 = new LimitSwitch(2);
+		
+		Counter counter1 = limitswitch1.counter;
+		Counter counter2 = limitswitch2.counter;
+
+		scoop = new Scoop(3, counter1, counter2);
 		
 		
 		oi = new OI();

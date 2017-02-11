@@ -8,8 +8,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class LimitSwitch extends Subsystem {
-	DigitalInput limitswitch;
-	Counter counter;
+	public DigitalInput limitswitch;
+	public Counter counter;
 	
 	public LimitSwitch (int dio_port){
 		super();
