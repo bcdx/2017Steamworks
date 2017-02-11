@@ -20,6 +20,9 @@ import org.usfirst.frc.team4856.robot.commands.ForwardShooter;
 //import org.usfirst.frc.team4856.robot.commands.Push;
 //import org.usfirst.frc.team4856.robot.commands.PushandShoot;
 
+import org.usfirst.frc.team4856.robot.commands.ScaleUp;
+import org.usfirst.frc.team4856.robot.commands.ScaleDown;
+
 
 //import org.usfirst.frc.team4856.robot.commands.TankDriveWithJoysticks;
 
@@ -61,6 +64,8 @@ public class OI {
 	// moveShooter.whenPressed(new SetAngleManually());
 	scoopUp.whileHeld(new PlaceGear()); 
 	scoopDown.whileHeld(new ReceiveGear());
+	scaleUp.whileHeld(new ScaleUp());
+	scaleDown.whileHeld(new ScaleDown());
 	 
 	 
 //	 retreatPusher.whileHeld(new Pull());
