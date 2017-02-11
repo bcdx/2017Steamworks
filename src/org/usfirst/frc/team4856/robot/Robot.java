@@ -10,6 +10,7 @@ import edu.wpi.cscore.CvSource;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.Victor;
@@ -64,6 +65,29 @@ public class Robot extends IterativeRobot {
 	Joystick leftstick = new Joystick(0);
 	Joystick rightstick = new Joystick(1);
 	Joystick thirdstick = new Joystick(2);
+	
+	//Gyro code - Reference Sample Project
+	
+	private static final double kAngleSetpoint = 0.0;
+	private static final double kP = 0.005; // proportional turning constant
+
+	// gyro calibration constant, may need to be adjusted;
+	// gyro value of 360 is set to correspond to one full revolution
+	private static final double kVoltsPerDegreePerSecond = 0.0128;
+
+	private static final int kLeftMotorPort = 0;
+	private static final int kRightMotorPort = 1;
+	private static final int kGyroPort = 0;
+	private static final int kJoystickPort = 0;
+
+	private RobotDrive myRobot = new RobotDrive(kLeftMotorPort, kRightMotorPort);
+	private AnalogGyro gyro = new AnalogGyro(kGyroPort);
+	private Joystick joystick = new Joystick(kJoystickPort);
+
+	/**
+	 * The motor speed is set from the joystick while the RobotDrive turning
+	 * value is assigned from the error between the setpoint and the gyro angle.
+	 */
 
 
 	public static Command autonomousCommand;
@@ -128,6 +152,7 @@ public class Robot extends IterativeRobot {
 		autonomousCommand = new AutonomousMode(); 
         left2.changeControlMode(CANTalon.TalonControlMode.Follower);
         right2.changeControlMode(CANTalon.TalonControlMode.Follower);
+        gyro.setSensitivity(kVoltsPerDegreePerSecond);
 
 		//		double[] defaultValue = new double[0];
 //////		while (true) {
@@ -199,6 +224,7 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
        autonomousCommand.cancel();
+       
 
     }
 
@@ -223,6 +249,12 @@ public class Robot extends IterativeRobot {
         right1.set(-1*rightAxis);
         right2.changeControlMode(CANTalon.TalonControlMode.Follower);
         right2.set(right1.getDeviceID());
+        
+        //Gyro - keep robot straight
+        double turningValue = (kAngleSetpoint - gyro.getAngle()) * kP;
+		// Invert the direction of the turn if we are going backwards
+		turningValue = Math.copySign(turningValue, joystick.getY());
+		myRobot.drive(joystick.getY(), turningValue);
     	
     }
     
