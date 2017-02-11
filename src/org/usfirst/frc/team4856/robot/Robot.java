@@ -146,13 +146,11 @@ public class Robot extends IterativeRobot {
 //		pusher = new Pusher();
 		//scaler = new Scaler();
 		
-		LimitSwitch limitswitch1 = new LimitSwitch(1);
-		LimitSwitch limitswitch2 = new LimitSwitch(2);
 		
-		Counter counter1 = limitswitch1.counter;
-		Counter counter2 = limitswitch2.counter;
+		
+		
 
-		scoop = new Scoop(3, counter1, counter2);
+		scoop = new Scoop(3, 1, 2);
 		
 		scaler = new Scaler();
 		
