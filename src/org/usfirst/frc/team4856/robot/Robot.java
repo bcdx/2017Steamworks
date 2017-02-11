@@ -24,7 +24,7 @@ import edu.wpi.first.wpilibj.vision.GripPipeline;
 //import org.usfirst.frc.team4856.robot.commands.TankDriveWithJoysticks;
 
 import org.usfirst.frc.team4856.robot.subsystems.Shooter;
-import org.usfirst.frc.team4856.robot.subsystems.Scaler;
+//import org.usfirst.frc.team4856.robot.subsystems.Scaler;
 import org.opencv.core.Mat;
 import org.opencv.core.Point;
 import org.opencv.core.Scalar;
@@ -52,7 +52,6 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static Shooter shooter;
 //	public static Pusher pusher;
-	public static Scaler scaler;
 	public static Scoop scoop;
 	
 	public static CANTalon left1= new CANTalon(1);
@@ -144,8 +143,7 @@ public class Robot extends IterativeRobot {
 	//	shooter = new Shooter();
 //		pusher = new Pusher();
 		//scaler = new Scaler();
-		scoop = new Scoop(3);
-		scaler = new Scaler();
+		scoop = new Scoop(3, 1, 2);
 		
 		
 		oi = new OI();
