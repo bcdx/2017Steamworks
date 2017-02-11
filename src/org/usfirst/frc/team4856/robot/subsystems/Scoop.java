@@ -27,31 +27,35 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  */
 public class Scoop extends Subsystem {
 	private SpeedController scoopMotor;
+	public LimitSwitch LS_up; 
+	public LimitSwitch LS_down; 
 	
 //    SpeedController armMotor = new Victor(1);
-    Counter counter1;
-    Counter counter2;
+  
 		
-	public Scoop (int pwm_port, Counter limitswitch1, Counter limitswitch2) {
+	public Scoop (int pwm_port, int dio_port_1, int dio_port_2) {
 		super();                                                                                                                                                                                      
 		scoopMotor = new Victor(pwm_port);
-		counter1 = limitswitch1;
-		counter2 = limitswitch2;
-		
+		LS_up = new LimitSwitch(dio_port_1);
+		LS_down = new LimitSwitch(dio_port_2);
 	}
 	
-	 public boolean isSwitch1Set() {
-		 return counter1.get() > 0;
-	 }
+	
+	
+//	 public boolean isSwitch1Set() {
+//		 return counter1.get() > 0;
+//	 }
+//	 
+//	 public boolean isSwitch2Set() {
+//		 return counter2.get() > 0;
+//	 }
+//
+//	 public void initializeCounter() {
+//	        counter1.reset();
+//	        counter2.reset();
+//	 } //for limit switch 2.10.17 
 	 
-	 public boolean isSwitch2Set() {
-		 return counter2.get() > 0;
-	 }
-
-	 public void initializeCounter() {
-	        counter1.reset();
-	        counter2.reset();
-	 } //for limit switch 2.10.17 
+	 
 	
 	 public void up() {
 		  scoopMotor.set(0.9);
