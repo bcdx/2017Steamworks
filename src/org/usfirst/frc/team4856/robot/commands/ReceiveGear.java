@@ -16,7 +16,6 @@ public class ReceiveGear extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.scoop.initializeCounter();
     	Robot.scoop.up();
     }
 
@@ -26,7 +25,7 @@ public class ReceiveGear extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return Robot.scoop.isSwitch1Set() == true && Robot.scoop.isSwitch2Set() == true;
+    	return Robot.scoop.LS_up.getState();
     }
 
     // Called once after isFinished returns true
