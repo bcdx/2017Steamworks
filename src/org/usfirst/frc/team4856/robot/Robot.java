@@ -24,8 +24,8 @@ import edu.wpi.first.wpilibj.Counter;
 
 //import org.usfirst.frc.team4856.robot.commands.TankDriveWithJoysticks;
 
-import org.usfirst.frc.team4856.robot.subsystems.Shooter;
-//import org.usfirst.frc.team4856.robot.subsystems.Scaler;
+//import org.usfirst.frc.team4856.robot.subsystems.Shooter;
+import org.usfirst.frc.team4856.robot.subsystems.Scaler;
 import org.opencv.core.Mat;
 import org.opencv.core.Point;
 import org.opencv.core.Scalar;
@@ -49,9 +49,10 @@ public class Robot extends IterativeRobot {
 	 * Declaration of variables. (e.g., chassis is an instance of DriveTrain)
 	 */
 	public NetworkTable table;
-
+	
 	public static OI oi;
-	public static Shooter shooter;
+//	public static Shooter shooter;
+	public static Scaler scaler;
 //	public static Pusher pusher;
 	public static Scoop scoop;
 	
@@ -152,6 +153,8 @@ public class Robot extends IterativeRobot {
 		Counter counter2 = limitswitch2.counter;
 
 		scoop = new Scoop(3, counter1, counter2);
+		
+		scaler = new Scaler();
 		
 		
 		oi = new OI();
