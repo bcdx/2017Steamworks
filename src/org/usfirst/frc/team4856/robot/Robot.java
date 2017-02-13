@@ -4,38 +4,15 @@ import java.io.IOException; //from newer GRIP code
 //CANTalon support package
 import com.ctre.CANTalon;
 
-import edu.wpi.cscore.AxisCamera;
-import edu.wpi.cscore.CvSink;
-import edu.wpi.cscore.CvSource;
-import edu.wpi.first.wpilibj.CameraServer;
-import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.SpeedController;
-import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.Victor;
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.AnalogGyro;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.networktables.NetworkTable;
-import edu.wpi.first.wpilibj.vision.GripPipeline;
-import edu.wpi.first.wpilibj.Counter;
-
-//import org.usfirst.frc.team4856.robot.commands.TankDriveWithJoysticks;
-
-//import org.usfirst.frc.team4856.robot.subsystems.Shooter;
-import org.usfirst.frc.team4856.robot.subsystems.Scaler;
-import org.opencv.core.Mat;
-import org.opencv.core.Point;
-import org.opencv.core.Scalar;
+import edu.wpi.cscore.*;
+import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.command.*;
+import edu.wpi.first.wpilibj.networktables.*;
+import edu.wpi.first.wpilibj.vision.*;
+import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;
-import org.usfirst.frc.team4856.robot.commands.AutonomousMode;
-
-//import org.usfirst.frc.team4856.robot.commands.AutonomousWithShoot;
-//import org.usfirst.frc.team4856.robot.subsystems.Pusher;
-//import org.usfirst.frc.team4856.robot.subsystems.Gyro;
-import org.usfirst.frc.team4856.robot.subsystems.Scoop;
+import org.usfirst.frc.team4856.robot.commands.*;
+import org.usfirst.frc.team4856.robot.subsystems.*;
 
 /**
  * The VM (virtual machine) is configured to automatically run this class, and to call the
@@ -52,6 +29,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static Scaler scaler;
 	public static Scoop scoop;
+	public static Bucket bucket;
 	
 	public static CANTalon left1= new CANTalon(1);
 	public static CANTalon left2= new CANTalon(2);
@@ -160,10 +138,12 @@ public class Robot extends IterativeRobot {
 		
 		scoop = new Scoop(3, 1, 2);		
 		scaler = new Scaler();
+		bucket = new Bucket(4);
 		
 		System.out.println("scaler inst in robot.java");
 //		scoop = new Scoop();
 		System.out.println("scoop inst in robot.java");
+		System.out.println("bucket isnt in robot.java");
 		//might need to put above subsystems
 		
 		oi = new OI();

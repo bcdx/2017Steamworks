@@ -45,11 +45,16 @@ public class OI {
 		JoystickButton scoopDown = new JoystickButton (thirdStick, 4);
 		JoystickButton scaleUp = new JoystickButton (thirdStick, 5);
 		JoystickButton scaleDown = new JoystickButton (thirdStick, 6);
+		JoystickButton servoOpen = new JoystickButton (thirdStick, 11);
+		JoystickButton servoClose = new JoystickButton (thirdStick, 12);
 	
 		scoopUp.whileHeld(new PlaceGear()); 
 		scoopDown.whileHeld(new ReceiveGear());
 		scaleUp.whileHeld(new ScaleUp());
-		scaleDown.whileHeld(new ScaleDown());	 
+		scaleDown.whileHeld(new ScaleDown());
+		servoOpen.whenPressed(new OpenServo());
+		servoClose.whenPressed(new CloseServo());
+		
 	}
 	
     //// CREATING BUTTONS

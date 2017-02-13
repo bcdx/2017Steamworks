@@ -8,7 +8,7 @@ public class Bucket extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
-	Servo servo;
+	public Servo servo;
 	
 	public Bucket(int servo_port) {
 		super();
