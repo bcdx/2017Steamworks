@@ -27,6 +27,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  */
 public class Scoop extends Subsystem {
 	private SpeedController scoopMotor;
+<<<<<<< HEAD
 	//public DigitalInput dInput_1;
 	//public DigitalInput dInput_2;
 	
@@ -43,6 +44,25 @@ public class Scoop extends Subsystem {
 	
 //	 public boolean isSwitch1Set() {
 //		return counter1.get() > 0;
+=======
+	public LimitSwitch LS_up; 
+	public LimitSwitch LS_down; 
+	
+//    SpeedController armMotor = new Victor(1);
+  
+		
+	public Scoop (int pwm_port, int dio_port_1, int dio_port_2) {
+		super();                                                                                                                                                                                      
+		scoopMotor = new Victor(pwm_port);
+		LS_up = new LimitSwitch(dio_port_1);
+		LS_down = new LimitSwitch(dio_port_2);
+	}
+	
+	
+	
+//	 public boolean isSwitch1Set() {
+//		 return counter1.get() > 0;
+>>>>>>> 35b95008abc37479387f9bb9920b59b7cb9b02b3
 //	 }
 //	 
 //	 public boolean isSwitch2Set() {
@@ -53,7 +73,13 @@ public class Scoop extends Subsystem {
 //	        counter1.reset();
 //	        counter2.reset();
 //	 } //for limit switch 2.10.17 
+<<<<<<< HEAD
 //	
+=======
+	 
+	 
+	
+>>>>>>> 35b95008abc37479387f9bb9920b59b7cb9b02b3
 	 public void up() {
 		  scoopMotor.set(0.4);
 		  System.out.println("receive gear method called");

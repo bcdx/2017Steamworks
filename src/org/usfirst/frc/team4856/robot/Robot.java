@@ -143,6 +143,7 @@ public class Robot extends IterativeRobot {
 //    	
 		
 		
+<<<<<<< HEAD
 		//LimitSwitch limitswitch1 = new LimitSwitch(1);
 	//	LimitSwitch limitswitch2 = new LimitSwitch(2);
 		
@@ -150,6 +151,13 @@ public class Robot extends IterativeRobot {
 //		Counter counter2 = limitswitch2.counter;
 
 		//scoop = new Scoop(3, counter1, counter2);
+=======
+		
+		
+		
+
+		scoop = new Scoop(3, 1, 2);
+>>>>>>> 35b95008abc37479387f9bb9920b59b7cb9b02b3
 		
 		scaler = new Scaler();
 		System.out.println("scaler inst in robot.java");
