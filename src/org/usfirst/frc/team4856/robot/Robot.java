@@ -31,10 +31,8 @@ import org.opencv.core.Point;
 import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;
 import org.usfirst.frc.team4856.robot.commands.AutonomousMode;
-<<<<<<< HEAD
-=======
+
 //import org.usfirst.frc.team4856.robot.commands.AutonomousWithShoot;
->>>>>>> 54489a702d99675c4f643c013c6f71e1a552fde6
 //import org.usfirst.frc.team4856.robot.subsystems.Pusher;
 //import org.usfirst.frc.team4856.robot.subsystems.Gyro;
 import org.usfirst.frc.team4856.robot.subsystems.Scoop;
@@ -60,14 +58,14 @@ public class Robot extends IterativeRobot {
 	public static CANTalon right1= new CANTalon(3);
 	public static CANTalon right2= new CANTalon(4);
 	
-	//Thread visionThread;
+	Thread visionThread;
 	
 	Joystick leftstick = new Joystick(0);
 	Joystick rightstick = new Joystick(1);
 	Joystick thirdstick = new Joystick(2);
 	
 	//Gyro code - Reference Sample Project
-<<<<<<< HEAD
+
 	private static final double kAngleSetpoint = 0.0;
 	private static final double kP = 0.005; // proportional turning constant
 
@@ -82,7 +80,6 @@ public class Robot extends IterativeRobot {
 	private RobotDrive myRobot = new RobotDrive(kLeftMotorPort, kRightMotorPort);
 	private AnalogGyro gyro = new AnalogGyro(kGyroPort);
 	private Joystick joystick = new Joystick(kJoystickPort);
-=======
 	
 //	private static final double kAngleSetpoint = 0.0;
 //	private static final double kP = 0.005; // proportional turning constant
@@ -99,7 +96,6 @@ public class Robot extends IterativeRobot {
 //	private RobotDrive myRobot = new RobotDrive(kLeftMotorPort, kRightMotorPort);
 //	private AnalogGyro gyro = new AnalogGyro(kGyroPort);
 //	private Joystick joystick = new Joystick(kJoystickPort);
->>>>>>> 54489a702d99675c4f643c013c6f71e1a552fde6
 
 	/**
 	 * The motor speed is set from the joystick while the RobotDrive turning
@@ -114,7 +110,7 @@ public class Robot extends IterativeRobot {
      */
     
     public void robotInit() {
-<<<<<<< HEAD
+    	
     	visionThread = new Thread(() -> {
 			// Get the Axis camera from CameraServer
 			AxisCamera camera = CameraServer.getInstance().addAxisCamera("axis-accc8e2708a3.local");
@@ -156,51 +152,7 @@ public class Robot extends IterativeRobot {
 
 		scoop = new Scoop(3, 1, 2);		
 		scaler = new Scaler();
-=======
-
-//    	visionThread = new Thread(() -> {
-//			// Get the Axis camera from CameraServer
-//			AxisCamera camera = CameraServer.getInstance().addAxisCamera("axis-accc8e2708a3.local");
-//			// Set the resolution
-//			camera.setResolution(640, 480);
-//
-//			// Get a CvSink. This will capture Mats from the camera
-//			CvSink cvSink = CameraServer.getInstance().getVideo();
-//			// Setup a CvSource. This will send images back to the Dashboard
-//			CvSource outputStream = CameraServer.getInstance().putVideo("Rectangle", 640, 480);
-//
-//			// Mats are very memory expensive. Lets reuse this Mat.
-//			Mat mat = new Mat();
-//			GripPipeline gp = new GripPipeline();
-//
-//			// This cannot be 'true'. The program will never exit if it is. This
-//			// lets the robot stop this thread when restarting robot code or
-//			// deploying.
-//			while (!Thread.interrupted()) {
-//				// Tell the CvSink to grab a frame from the camera and put it
-//				// in the source mat.  If there is an error notify the output.
-//				if (cvSink.grabFrame(mat) == 0) {
-//					// Send the output the error.
-//					outputStream.notifyError(cvSink.getError());
-//					// skip the rest of the current iteration
-//					continue;
-//				}
-//				// Put a rectangle on the image
-//				Imgproc.rectangle(mat, new Point(100, 100), new Point(400, 400),
-//						new Scalar(255, 255, 255), 5);
-//				// Give the output stream a new image to display
-//				outputStream.putFrame(mat);
-//				gp.process(mat);
-//				System.out.print("mat: " + mat);
-//				
-//			}
-//		});
-//		visionThread.setDaemon(true);
-//		visionThread.start();
-//    	
 		
-		
-<<<<<<< HEAD
 		//LimitSwitch limitswitch1 = new LimitSwitch(1);
 	//	LimitSwitch limitswitch2 = new LimitSwitch(2);
 		
@@ -208,20 +160,14 @@ public class Robot extends IterativeRobot {
 //		Counter counter2 = limitswitch2.counter;
 
 		//scoop = new Scoop(3, counter1, counter2);
-=======
 		
-		
-		
-
-		scoop = new Scoop(3, 1, 2);
->>>>>>> 35b95008abc37479387f9bb9920b59b7cb9b02b3
-		
+		scoop = new Scoop(3, 1, 2);		
 		scaler = new Scaler();
+		
 		System.out.println("scaler inst in robot.java");
-		scoop = new Scoop();
+//		scoop = new Scoop();
 		System.out.println("scoop inst in robot.java");
 		//might need to put above subsystems
->>>>>>> 54489a702d99675c4f643c013c6f71e1a552fde6
 		
 		oi = new OI();
 		autonomousCommand = new AutonomousMode(); 
@@ -317,19 +263,17 @@ public class Robot extends IterativeRobot {
         right2.changeControlMode(CANTalon.TalonControlMode.Follower);
         right2.set(right1.getDeviceID());
         
-<<<<<<< HEAD
         //Gyro - keep robot straight
         double turningValue = (kAngleSetpoint - gyro.getAngle()) * kP;
 		// Invert the direction of the turn if we are going backwards
 		turningValue = Math.copySign(turningValue, joystick.getY());
 		myRobot.drive(joystick.getY(), turningValue);
-=======
-//        //Gyro - keep robot straight
-//        double turningValue = (kAngleSetpoint - gyro.getAngle()) * kP;
-//		// Invert the direction of the turn if we are going backwards
+		
+//      Gyro - keep robot straight
+//      double turningValue = (kAngleSetpoint - gyro.getAngle()) * kP;
+//		Invert the direction of the turn if we are going backwards
 //		turningValue = Math.copySign(turningValue, joystick.getY());
 //		myRobot.drive(joystick.getY(), turningValue);
-    	
->>>>>>> 54489a702d99675c4f643c013c6f71e1a552fde6
+		
     }
 }
