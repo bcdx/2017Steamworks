@@ -18,10 +18,8 @@ public class LimitSwitch extends Subsystem {
 	}
 	
 	public boolean getState(){
-		
-		return lSwitch.get();
+		return (boolean) lSwitch.get();
 	}
-
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.

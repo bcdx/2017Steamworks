@@ -3,7 +3,7 @@ package org.usfirst.frc.team4856.robot.commands;
 import org.usfirst.frc.team4856.robot.Robot;
 
 
-import org.usfirst.frc.team4856.robot.subsystems.Shooter;
+//import org.usfirst.frc.team4856.robot.subsystems.Shooter;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
@@ -17,7 +17,7 @@ public class SetAngleManually extends Command {
 
     public SetAngleManually() {
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.shooter);
+//        requires(Robot.shooter);
     }
 
     // Called just before this Command runs the first time
@@ -39,7 +39,7 @@ public class SetAngleManually extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.shooter.stop();
+ //   	Robot.shooter.stop();
     }
 
     // Called when another command which requires one or more of the same

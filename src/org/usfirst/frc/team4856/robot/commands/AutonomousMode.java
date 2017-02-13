@@ -16,7 +16,6 @@ import edu.wpi.first.wpilibj.command.Scheduler;
  */
 public class AutonomousMode extends CommandGroup {
 
-	
 	CANTalon left1= new CANTalon(0);
 	CANTalon left2= new CANTalon(1);
 	CANTalon right1= new CANTalon(2);
@@ -25,17 +24,12 @@ public class AutonomousMode extends CommandGroup {
 	Timer timer;
 	Gyro gyro;
 	
-	
     public AutonomousMode() {
     	timer = new Timer();
     	gyro = new Gyro(1);
     	
-
-//    	requires(Robot.shooter);
-//    	requires(Robot.pusher);
-        // Use requires() here to declare subsystem dependencies
 //    	 Scheduler.getInstance().run();
-         //drives forward for certain amount of time
+// drives forward for certain amount of time
 //    	 long t= System.currentTimeMillis();
 //    	 long end = t+5000;
 //    	 while(System.currentTimeMillis() < end){
@@ -53,19 +47,7 @@ public class AutonomousMode extends CommandGroup {
 //             left1.set(0);
 //             right1.setExpiration(3.0);
 //             right1.set(0);
-             
-//             Robot.shooter.shoot();
-//         	Timer.delay(3);
-//         	Robot.pusher.push();
-//         	Timer.delay(2);
-//         	Robot.shooter.stop();
-//         	Robot.pusher.stop();
-           
-
-}
-    	 
-    	 
-    
+    }
 
     // Called just before this Command runs the first time
     protected void initialize() {
@@ -75,20 +57,6 @@ public class AutonomousMode extends CommandGroup {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    /*	if (timer.get()<7){
-    		Robot.left1.set(0.99);
-    		//Robot.right1.set(-0.99);
-    	}
-    	else {
-    		Robot.shooter.shoot();
-        	Timer.delay(3);
-        	Robot.pusher.push();
-        	Timer.delay(2);
-        	Robot.shooter.stop();
-        	Robot.pusher.stop();
-        	end();
-    	}*/    	
-
     	if (timer.get() < 7){
     		left1.set(0.365);
     		left2.set(0.365);
@@ -97,15 +65,13 @@ public class AutonomousMode extends CommandGroup {
     	}
     	gyro.turn30Degrees();
 
-
 //    	while (timer.get() > 1){
 //    		System.out.println(gyro.getAngle());
 //    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished()
-    {
+    protected boolean isFinished() {
         return timer.get()>0.1;
     }
 
@@ -121,5 +87,5 @@ public class AutonomousMode extends CommandGroup {
     // subsystems is scheduled to run
     protected void interrupted() {
     	end();
-    	}
+    }
 }

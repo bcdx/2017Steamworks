@@ -21,8 +21,7 @@ public class AutonomousWithoutGyro extends Command {
 
     public AutonomousWithoutGyro() {
     	timer = new Timer();
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+        // Use requires() here to declare subsystem dependencies; eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
@@ -41,9 +40,9 @@ public class AutonomousWithoutGyro extends Command {
     	}	
     	
     	else if (timer.get() < 7){
-        	left1.set(0.365 * 0.866);//cosine of 30 = 0.866
+        	left1.set(0.365 * 0.866);	//cosine of 30 = 0.866
         	left2.set(0.365 * 0.866);
-        	right1.set(0.5  * 0.5);//sine of 30 = 0.5
+        	right1.set(0.5  * 0.5);	//sine of 30 = 0.5
         	right2.set(0.5 * 0.5);
     	}
     		
@@ -58,7 +57,7 @@ public class AutonomousWithoutGyro extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	return timer.get()>15; //stops autonomous mode when timer is longer than 15 seconds
-//        return false;
+    	// return false;
     }
 
     // Called once after isFinished returns true
@@ -69,8 +68,7 @@ public class AutonomousWithoutGyro extends Command {
         Robot.right2.set(0);
     }
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
+    // Called when another command which requires one or more of the same subsystems is scheduled to run
     protected void interrupted() {
     	end();
     }
