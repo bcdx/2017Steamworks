@@ -150,9 +150,6 @@ public class Robot extends IterativeRobot {
 		visionThread.setDaemon(true);
 		visionThread.start();
 
-		scoop = new Scoop(3, 1, 2);		
-		scaler = new Scaler();
-		
 		//LimitSwitch limitswitch1 = new LimitSwitch(1);
 	//	LimitSwitch limitswitch2 = new LimitSwitch(2);
 		
