@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class ScaleUp extends Command{
 
-	private Joystick scalerStick;
+	private Joystick thirdStick;
 
     public ScaleUp() {
         // Use requires() here to decqare subsystem dependencies
@@ -19,7 +19,9 @@ public class ScaleUp extends Command{
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	System.out.println("extend command called");
     	Robot.scaler.extend();
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run

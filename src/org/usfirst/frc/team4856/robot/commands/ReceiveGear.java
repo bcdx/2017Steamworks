@@ -16,17 +16,29 @@ public class ReceiveGear extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+<<<<<<< HEAD
+    	//Robot.scoop.initializeCounter();
+=======
+>>>>>>> 35b95008abc37479387f9bb9920b59b7cb9b02b3
     	Robot.scoop.up();
+    	System.out.println("receive gear command called");
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     }
 
+<<<<<<< HEAD
+//    // Make this return true when this Command no longer needs to run execute()
+//    protected boolean isFinished() {
+//    	return Robot.scoop.isSwitch1Set() == true && Robot.scoop.isSwitch2Set() == true;
+//    }
+=======
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	return !(Robot.scoop.LS_up.getState());
     }
+>>>>>>> 35b95008abc37479387f9bb9920b59b7cb9b02b3
 
     // Called once after isFinished returns true
     protected void end() {
@@ -40,4 +52,10 @@ public class ReceiveGear extends Command {
     	end();
 
     }
+
+	@Override
+	protected boolean isFinished() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

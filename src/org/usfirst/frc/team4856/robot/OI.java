@@ -3,7 +3,8 @@ import edu.wpi.first.wpilibj.Relay;
 //import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import org.usfirst.frc.team4856.robot.commands.*;
-import org.usfirst.frc.team4856.robot.subsystems.*;
+import org.usfirst.frc.team4856.robot.subsystems.Scaler;
+import org.usfirst.frc.team4856.robot.subsystems.Scoop;
 
 
 
@@ -12,9 +13,15 @@ import org.usfirst.frc.team4856.robot.subsystems.*;
 //import org.usfirst.frc.team4856.robot.commands.SpikeOn;
 
 //import org.usfirst.frc.team4856.robot.commands.BackwardShooter;
+<<<<<<< HEAD
 //import org.usfirst.frc.team4856.robot.commands.Extend;
 import org.usfirst.frc.team4856.robot.commands.SetAngleManually;
 
+=======
+////import org.usfirst.frc.team4856.robot.commands.Extend;
+//import org.usfirst.frc.team4856.robot.commands.SetAngleManually;
+//
+>>>>>>> 54489a702d99675c4f643c013c6f71e1a552fde6
 //import org.usfirst.frc.team4856.robot.commands.ForwardShooter;
 //import org.usfirst.frc.team4856.robot.commands.Push;
 //import org.usfirst.frc.team4856.robot.commands.PushandShoot;

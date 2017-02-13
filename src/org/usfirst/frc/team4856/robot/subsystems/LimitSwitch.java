@@ -8,6 +8,13 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class LimitSwitch extends Subsystem {
+<<<<<<< HEAD
+	public DigitalInput limitswitch;
+	
+	public LimitSwitch (int dio_port){
+		super();
+		limitswitch = new DigitalInput(dio_port);
+=======
 	public DigitalInput lSwitch;
 
 	
@@ -18,7 +25,13 @@ public class LimitSwitch extends Subsystem {
 	}
 	
 	public boolean getState(){
+<<<<<<< HEAD
 		return (boolean) lSwitch.get();
+=======
+		
+		return lSwitch.get();
+>>>>>>> 35b95008abc37479387f9bb9920b59b7cb9b02b3
+>>>>>>> 54489a702d99675c4f643c013c6f71e1a552fde6
 	}
 
     // Put methods for controlling this subsystem
@@ -29,8 +42,8 @@ public class LimitSwitch extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     
-//    public boolean getState() {
-//    	return lSwitch.get();
-//    }
+    public boolean getState() {
+    	return (boolean)limitswitch.get();
+    }
 }
 

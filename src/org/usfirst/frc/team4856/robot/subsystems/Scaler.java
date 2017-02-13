@@ -14,17 +14,18 @@ public class Scaler extends Subsystem {
 		
 	public Scaler () {
 		super();                                                                                                                                                                                      
-		scalerMotor = new Victor(1);
-	//hello 1/30/17	
+		scalerMotor = new Victor(3);
 	}
 	
    public void extend() {
 	   scalerMotor.set(0.8);
+	   System.out.println("extend method called");
    }
  
 	
    public void retract () {
 	   scalerMotor.set(-0.8);
+	   System.out.println("retract method called");
 	}
    
    public void stop() {
