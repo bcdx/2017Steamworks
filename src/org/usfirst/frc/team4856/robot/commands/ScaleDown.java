@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class ScaleDown extends Command{
 
-	private Joystick scalerStick;
+	private Joystick thirdStick;
 
     public ScaleDown() {
         // Use requires() here to declare subsystem dependencies
@@ -18,7 +18,9 @@ public class ScaleDown extends Command{
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	System.out.println("retract command called");
     	Robot.scaler.retract();
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run

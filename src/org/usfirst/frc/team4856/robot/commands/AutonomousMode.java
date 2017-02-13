@@ -1,6 +1,6 @@
 package org.usfirst.frc.team4856.robot.commands;
 import org.usfirst.frc.team4856.robot.Robot;
-import org.usfirst.frc.team4856.robot.subsystems.Gyro;
+//import org.usfirst.frc.team4856.robot.subsystems.Gyro;
 
 //CAN Talon support package
 import com.ctre.CANTalon;
@@ -23,12 +23,12 @@ public class AutonomousMode extends CommandGroup {
 	CANTalon right2= new CANTalon(3);
 
 	Timer timer;
-	Gyro gyro;
+//	Gyro gyro;
 	
 	
     public AutonomousMode() {
     	timer = new Timer();
-    	gyro = new Gyro(1);
+//    	gyro = new Gyro(1);
     	
 
 //    	requires(Robot.shooter);
@@ -95,7 +95,7 @@ public class AutonomousMode extends CommandGroup {
     		right1.set(0.5);
     		right2.set(0.5);
     	}
-    	gyro.turn30Degrees();
+ //   	gyro.turn30Degrees();
 
 
 //    	while (timer.get() > 1){

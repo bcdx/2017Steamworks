@@ -9,13 +9,10 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class LimitSwitch extends Subsystem {
 	public DigitalInput limitswitch;
-	public Counter counter;
 	
 	public LimitSwitch (int dio_port){
 		super();
-//		lSwitch = new DigitalInput(dio_port);
 		limitswitch = new DigitalInput(dio_port);
-		counter = new Counter(limitswitch);
 	}
 
 
@@ -27,8 +24,8 @@ public class LimitSwitch extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     
-//    public boolean getState() {
-//    	return lSwitch.get();
-//    }
+    public boolean getState() {
+    	return (boolean)limitswitch.get();
+    }
 }
 
