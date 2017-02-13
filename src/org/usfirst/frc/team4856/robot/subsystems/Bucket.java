@@ -11,10 +11,16 @@ public class Bucket extends Subsystem {
 	Servo servo;
 	
 	public Bucket(int servo_port) {
-		
 		super();
 		servo = new Servo(servo_port);
-		
+	}
+	
+	public void open() {
+		servo.set(1.0);
+	}
+	
+	public void close() {
+		servo.set(0.5);
 	}
 
     public void initDefaultCommand() {
