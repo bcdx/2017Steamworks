@@ -74,6 +74,8 @@ public class Robot extends IterativeRobot {
 //	private RobotDrive myRobot = new RobotDrive(kLeftMotorPort, kRightMotorPort);
 //	private AnalogGyro gyro = new AnalogGyro(kGyroPort);
 //	private Joystick joystick = new Joystick(kJoystickPort);
+	
+	
 
 	/**
 	 * The motor speed is set from the joystick while the RobotDrive turning
@@ -136,7 +138,7 @@ public class Robot extends IterativeRobot {
 
 		//scoop = new Scoop(3, counter1, counter2);
 		
-		scoop = new Scoop(3, 1, 2);		
+		scoop = new Scoop(0);		
 		scaler = new Scaler();
 		bucket = new Bucket(4);
 		

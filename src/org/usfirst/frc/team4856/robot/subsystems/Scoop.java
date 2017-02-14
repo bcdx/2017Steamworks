@@ -29,11 +29,11 @@ public class Scoop extends Subsystem {
 //    SpeedController armMotor = new Victor(1);
   
 		
-	public Scoop (int pwm_port, int dio_port_1, int dio_port_2) {
+	public Scoop (int pwm_port/*, int dio_port_1, int dio_port_2*/) {
 		super();                                                                                                                                                                                      
 		scoopMotor = new Victor(pwm_port);
-		LS_up = new LimitSwitch(dio_port_1);
-		LS_down = new LimitSwitch(dio_port_2);
+//		LS_up = new LimitSwitch(dio_port_1);
+//		LS_down = new LimitSwitch(dio_port_2);
 	}
 	
 //	 public boolean isSwitch1Set() {
