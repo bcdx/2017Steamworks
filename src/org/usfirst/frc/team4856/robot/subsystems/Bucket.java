@@ -8,21 +8,26 @@ public class Bucket extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
-	public Servo servo;
+	private Servo servo;
 	
-	public Bucket(int servo_port) {
+	public Bucket() {
 		super();
-		servo = new Servo(servo_port);
+		servo = new Servo (4);
 	}
 	
 	public void open() {
-		servo.set(1.0);
+		servo.set(0.2);
 	}
 	
 	public void close() {
-		servo.set(0.5);
+		servo.set(0);
+	}
+	
+	public void stop() {
+		
 	}
 
+	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());

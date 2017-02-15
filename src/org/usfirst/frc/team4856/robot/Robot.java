@@ -42,35 +42,19 @@ public class Robot extends IterativeRobot {
 	Joystick rightstick = new Joystick(1);
 	Joystick thirdstick = new Joystick(2);
 	
-	//Gyro code - Reference Sample Project
-
+//	//Gyro code - Reference Sample Project
+//
 	private static final double kAngleSetpoint = 0.0;
 	private static final double kP = 0.005; // proportional turning constant
-
-	// gyro calibration constant, may need to be adjusted;
-	// gyro value of 360 is set to correspond to one full revolution
+//
+//	// gyro calibration constant, may need to be adjusted;
+//	// gyro value of 360 is set to correspond to one full revolution
 	private static final double kVoltsPerDegreePerSecond = 0.0128;
 	private static final int kLeftMotorPort = 0;
 	private static final int kRightMotorPort = 1;
 	private static final int kGyroPort = 0;
 	private static final int kJoystickPort = 0;
 
-	private RobotDrive myRobot = new RobotDrive(kLeftMotorPort, kRightMotorPort);
-	private AnalogGyro gyro = new AnalogGyro(kGyroPort);
-	private Joystick joystick = new Joystick(kJoystickPort);
-	
-//	private static final double kAngleSetpoint = 0.0;
-//	private static final double kP = 0.005; // proportional turning constant
-
-	// gyro calibration constant, may need to be adjusted;
-	// gyro value of 360 is set to correspond to one full revolution
-//	private static final double kVoltsPerDegreePerSecond = 0.0128;
-//
-//	private static final int kLeftMotorPort = 0;
-//	private static final int kRightMotorPort = 1;
-//	private static final int kGyroPort = 0;
-//	private static final int kJoystickPort = 0;
-//
 //	private RobotDrive myRobot = new RobotDrive(kLeftMotorPort, kRightMotorPort);
 //	private AnalogGyro gyro = new AnalogGyro(kGyroPort);
 //	private Joystick joystick = new Joystick(kJoystickPort);
@@ -91,44 +75,44 @@ public class Robot extends IterativeRobot {
     
     public void robotInit() {
     	
-    	visionThread = new Thread(() -> {
-			// Get the Axis camera from CameraServer
-			AxisCamera camera = CameraServer.getInstance().addAxisCamera("axis-accc8e2708a3.local");
-			// Set the resolution
-			camera.setResolution(640, 480);
-
-			// Get a CvSink. This will capture Mats from the camera
-			CvSink cvSink = CameraServer.getInstance().getVideo();
-			// Setup a CvSource. This will send images back to the Dashboard
-			CvSource outputStream = CameraServer.getInstance().putVideo("Rectangle", 640, 480);
-
-			// Mats are very memory expensive. Lets reuse this Mat.
-			Mat mat = new Mat();
-			GripPipeline gp = new GripPipeline();
-
-			// This cannot be 'true'. The program will never exit if it is. This lets the robot stop this thread when 
-			//restarting robot code or deploying.
-			
-			while (!Thread.interrupted()) {
-				// Tell the CvSink to grab a frame from the camera and put it
-				// in the source mat.  If there is an error notify the output.
-				if (cvSink.grabFrame(mat) == 0) { 
-					// Send the output the error.
-					outputStream.notifyError(cvSink.getError()); 
-					// skip the rest of the current iteration
-					continue;
-				}
-				// Put a rectangle on the image
-				Imgproc.rectangle(mat, new Point(100, 100), new Point(400, 400),
-						new Scalar(255, 255, 255), 5);
-				// Give the output stream a new image to display
-				outputStream.putFrame(mat);
-				gp.process(mat);
-				System.out.print("mat: " + mat);	
-			}
-		});
-		visionThread.setDaemon(true);
-		visionThread.start();
+//    	visionThread = new Thread(() -> {
+//			// Get the Axis camera from CameraServer
+//			AxisCamera camera = CameraServer.getInstance().addAxisCamera("axis-accc8e2708a3.local");
+//			// Set the resolution
+//			camera.setResolution(640, 480);
+//
+//			// Get a CvSink. This will capture Mats from the camera
+//			CvSink cvSink = CameraServer.getInstance().getVideo();
+//			// Setup a CvSource. This will send images back to the Dashboard
+//			CvSource outputStream = CameraServer.getInstance().putVideo("Rectangle", 640, 480);
+//
+//			// Mats are very memory expensive. Lets reuse this Mat.
+//			Mat mat = new Mat();
+//			GripPipeline gp = new GripPipeline();
+//
+//			// This cannot be 'true'. The program will never exit if it is. This lets the robot stop this thread when 
+//			//restarting robot code or deploying.
+//			
+//			while (!Thread.interrupted()) {
+//				// Tell the CvSink to grab a frame from the camera and put it
+//				// in the source mat.  If there is an error notify the output.
+//				if (cvSink.grabFrame(mat) == 0) { 
+//					// Send the output the error.
+//					outputStream.notifyError(cvSink.getError()); 
+//					// skip the rest of the current iteration
+//					continue;
+//				}
+//				// Put a rectangle on the image
+//				Imgproc.rectangle(mat, new Point(100, 100), new Point(400, 400),
+//						new Scalar(255, 255, 255), 5);
+//				// Give the output stream a new image to display
+//				outputStream.putFrame(mat);
+//				gp.process(mat);
+//				System.out.print("mat: " + mat);	
+//			}
+//		});
+//		visionThread.setDaemon(true);
+//		visionThread.start();
 
 		//LimitSwitch limitswitch1 = new LimitSwitch(1);
 	//	LimitSwitch limitswitch2 = new LimitSwitch(2);
@@ -138,15 +122,13 @@ public class Robot extends IterativeRobot {
 
 		//scoop = new Scoop(3, counter1, counter2);
 		
-		scoop = new Scoop(0);		
+		scoop = new Scoop();		
 		scaler = new Scaler();
-		bucket = new Bucket(4);
+		bucket = new Bucket();
 		
 		System.out.println("scaler inst in robot.java");
-//		scoop = new Scoop();
 		System.out.println("scoop inst in robot.java");
-		System.out.println("bucket isnt in robot.java");
-		//might need to put above subsystems
+		System.out.println("bucket inst in robot.java");
 		
 		oi = new OI();
 		autonomousCommand = new AutonomousMode(); 
@@ -242,14 +224,14 @@ public class Robot extends IterativeRobot {
         right2.changeControlMode(CANTalon.TalonControlMode.Follower);
         right2.set(right1.getDeviceID());
         
-        //Gyro - keep robot straight
-        double turningValue = (kAngleSetpoint - gyro.getAngle()) * kP;
-		// Invert the direction of the turn if we are going backwards
-		turningValue = Math.copySign(turningValue, joystick.getY());
-		myRobot.drive(joystick.getY(), turningValue);
-		
-//      Gyro - keep robot straight
-//      double turningValue = (kAngleSetpoint - gyro.getAngle()) * kP;
+//        //Gyro - keep robot straight
+//        double turningValue = (kAngleSetpoint - gyro.getAngle()) * kP;
+//		// Invert the direction of the turn if we are going backwards
+//		turningValue = Math.copySign(turningValue, joystick.getY());
+//		myRobot.drive(joystick.getY(), turningValue);
+//		
+////      Gyro - keep robot straight
+////      double turningValue = (kAngleSetpoint - gyro.getAngle()) * kP;
 //		Invert the direction of the turn if we are going backwards
 //		turningValue = Math.copySign(turningValue, joystick.getY());
 //		myRobot.drive(joystick.getY(), turningValue);

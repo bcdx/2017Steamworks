@@ -42,11 +42,11 @@ public class OI {
 
 	public OI() {
 		JoystickButton scoopUp = new JoystickButton (thirdStick, 3);
-		JoystickButton scoopDown = new JoystickButton (thirdStick, 4);
+		JoystickButton scoopDown = new JoystickButton (thirdStick, 2);
 		JoystickButton scaleUp = new JoystickButton (thirdStick, 5);
-		JoystickButton scaleDown = new JoystickButton (thirdStick, 6);
-		JoystickButton servoOpen = new JoystickButton (thirdStick, 11);
-		JoystickButton servoClose = new JoystickButton (thirdStick, 12);
+		JoystickButton scaleDown = new JoystickButton (thirdStick, 4);
+		JoystickButton servoOpen = new JoystickButton (thirdStick, 9);
+		JoystickButton servoClose = new JoystickButton (thirdStick, 8);
 	
 		scoopUp.whileHeld(new PlaceGear()); 
 		scoopDown.whileHeld(new ReceiveGear());

@@ -22,11 +22,11 @@ public class AutonomousMode extends CommandGroup {
 	CANTalon right2= new CANTalon(3);
 
 	Timer timer;
-	Gyro gyro;
+	//Gyro gyro;
 	
     public AutonomousMode() {
     	timer = new Timer();
-    	gyro = new Gyro(1);
+    	//gyro = new Gyro(1);
     	
 //    	 Scheduler.getInstance().run();
 // drives forward for certain amount of time
@@ -63,7 +63,7 @@ public class AutonomousMode extends CommandGroup {
     		right1.set(0.5);
     		right2.set(0.5);
     	}
-    	gyro.turn(30);
+    	//gyro.turn(30);
 
 //    	while (timer.get() > 1){
 //    		System.out.println(gyro.getAngle());
