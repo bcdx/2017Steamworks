@@ -110,7 +110,7 @@ public class Robot extends IterativeRobot {
 //				gp.process(mat);
 //				System.out.print("mat: " + mat);	
 //			}
-//		});
+//		});  
 //		visionThread.setDaemon(true);
 //		visionThread.start();
 
@@ -122,7 +122,7 @@ public class Robot extends IterativeRobot {
 
 		//scoop = new Scoop(3, counter1, counter2);
 		
-		scoop = new Scoop();		
+		scoop = new Scoop(0, 1);		
 		scaler = new Scaler();
 		bucket = new Bucket();
 		

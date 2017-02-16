@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4856.robot.commands;
 import org.usfirst.frc.team4856.robot.Robot;
 import org.usfirst.frc.team4856.robot.subsystems.Gyro;
+import org.usfirst.frc.team4856.robot.subsystems.Scoop;
 
 //CAN Talon support package
 import com.ctre.CANTalon;
@@ -22,10 +23,12 @@ public class AutonomousMode extends CommandGroup {
 	CANTalon right2= new CANTalon(3);
 
 	Timer timer;
+	Scoop scoop;
 	//Gyro gyro;
 	
     public AutonomousMode() {
-    	timer = new Timer();
+//    	timer = new Timer();
+//    	scoop = new Scoop(0, 1);
     	//gyro = new Gyro(1);
     	
 //    	 Scheduler.getInstance().run();
@@ -51,36 +54,41 @@ public class AutonomousMode extends CommandGroup {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	timer.reset();
-    	timer.start();
+//    	timer.reset();
+//    	timer.start();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (timer.get() < 7){
-    		left1.set(0.365);
-    		left2.set(0.365);
-    		right1.set(0.5);
-    		right2.set(0.5);
-    	}
+    	//scoop.up(); 
+    //	Timer.delay(3);
+    	//scoop.stop(); 
+//    	if (timer.get() < 7){
+//    		left1.set(0.365);
+//    		left2.set(0.365);
+//    		right1.set(0.5);
+//    		right2.set(0.5);
+//    	}
     	//gyro.turn(30);
 
 //    	while (timer.get() > 1){
 //    		System.out.println(gyro.getAngle());
 //    	}
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return timer.get()>0.1;
+       // return timer.get()> 4;
+    	return false;
     }
-
+ 
     // Called once after isFinished returns true
     protected void end() {    
-        Robot.left1.set(0);
-        Robot.right1.set(0);
-        Robot.left2.set(0);
-        Robot.right2.set(0);
+//        Robot.left1.set(0);
+//        Robot.right1.set(0);
+//        Robot.left2.set(0);
+//        Robot.right2.set(0);
     }
 
     // Called when another command which requires one or more of the same

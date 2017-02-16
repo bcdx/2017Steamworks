@@ -16,7 +16,7 @@ public class Bucket extends Subsystem {
 	}
 	
 	public void open() {
-		servo.set(0.2);
+		servo.set(0.3);
 	}
 	
 	public void close() {

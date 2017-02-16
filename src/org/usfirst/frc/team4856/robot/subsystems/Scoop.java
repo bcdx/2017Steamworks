@@ -23,21 +23,17 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 public class Scoop extends Subsystem {
 	private SpeedController scoopMotor;
-	//public DigitalInput di_up; 
-	//public DigitalInput di_down; 
+	public DigitalInput di_up; 
+	public DigitalInput di_down; 
 	
-//    SpeedController armMotor = new Victor(1);
+    //SpeedController armMotor = new Victor(1);
   
 		
-	public Scoop () {
+	public Scoop (int pwm_port, int dio_port_1) {
 		super();                                                                                                                                                                                      
-		scoopMotor = new Victor(0);
-		//di_up = new DigitalInput(dio_port_1);
+		scoopMotor = new Victor(pwm_port);
+		di_up = new DigitalInput(dio_port_1);
 		//di_down = new DigitalInput(dio_port_2);
-		
-		
-		
-	
 	}
 	
  
