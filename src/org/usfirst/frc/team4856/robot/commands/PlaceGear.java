@@ -19,17 +19,18 @@ public class PlaceGear extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     //	Robot.scoop.initializeCounter();
-    	Robot.scoop.down();
+    	Robot.scoop.place();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     }
 
-    // Make this return true when this Command no longer needs to run execute()
-//    protected boolean isFinished() {
-//   //	return Robot.scoop.isSwitch1Set() == false && Robot.scoop.isSwitch2Set() == false;
-//    }
+	protected boolean isFinished() {
+		// TODO Auto-generated method stub
+		return (boolean) (Robot.scoop.di_place.get());
+	}
+	// Make this return true when this Command no longer needs to run execute()
 
     // Called once after isFinished returns true
     protected void end() {
@@ -44,10 +45,6 @@ public class PlaceGear extends Command {
 
     }
 
-	@Override
-	protected boolean isFinished() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	
+//	@Override
+
 }

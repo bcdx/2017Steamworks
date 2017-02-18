@@ -38,8 +38,8 @@ public class Robot extends IterativeRobot {
 	
 	Thread visionThread;
 	
-	Joystick leftstick = new Joystick(0);
-	Joystick rightstick = new Joystick(1);
+	Joystick leftstick = new Joystick(1);
+	Joystick rightstick = new Joystick(0);
 	Joystick thirdstick = new Joystick(2);
 	
 //	//Gyro code - Reference Sample Project
@@ -58,15 +58,16 @@ public class Robot extends IterativeRobot {
 //	private RobotDrive myRobot = new RobotDrive(kLeftMotorPort, kRightMotorPort);
 //	private AnalogGyro gyro = new AnalogGyro(kGyroPort);
 //	private Joystick joystick = new Joystick(kJoystickPort);
-	
-	
+
+
+	Mat mat; //camera
 
 	/**
 	 * The motor speed is set from the joystick while the RobotDrive turning
 	 * value is assigned from the error between the setpoint and the gyro angle.
 	 */
 
-	public static Command autonomousCommand;
+	public static Command autonomousWithoutGyro;
 	
     /**
      * This function is run when the robot is first started up and should be
@@ -75,42 +76,51 @@ public class Robot extends IterativeRobot {
     
     public void robotInit() {
     	
-//    	visionThread = new Thread(() -> {
-//			// Get the Axis camera from CameraServer
-//			AxisCamera camera = CameraServer.getInstance().addAxisCamera("axis-accc8e2708a3.local");
-//			// Set the resolution
-//			camera.setResolution(640, 480);
-//
-//			// Get a CvSink. This will capture Mats from the camera
-//			CvSink cvSink = CameraServer.getInstance().getVideo();
-//			// Setup a CvSource. This will send images back to the Dashboard
-//			CvSource outputStream = CameraServer.getInstance().putVideo("Rectangle", 640, 480);
-//
-//			// Mats are very memory expensive. Lets reuse this Mat.
-//			Mat mat = new Mat();
-//			GripPipeline gp = new GripPipeline();
-//
-//			// This cannot be 'true'. The program will never exit if it is. This lets the robot stop this thread when 
-//			//restarting robot code or deploying.
-//			
-//			while (!Thread.interrupted()) {
-//				// Tell the CvSink to grab a frame from the camera and put it
-//				// in the source mat.  If there is an error notify the output.
-//				if (cvSink.grabFrame(mat) == 0) { 
-//					// Send the output the error.
-//					outputStream.notifyError(cvSink.getError()); 
-//					// skip the rest of the current iteration
-//					continue;
+    	visionThread = new Thread(() -> {
+			// Get the Axis camera from CameraServer
+			AxisCamera camera = CameraServer.getInstance().addAxisCamera("axis-accc8e2708a3.local");
+			// Set the resolution
+			camera.setResolution(640, 480);
+
+			// Get a CvSink. This will capture Mats from the camera
+			CvSink cvSink = CameraServer.getInstance().getVideo();
+			// Setup a CvSource. This will send images back to the Dashboard
+			CvSource outputStream = CameraServer.getInstance().putVideo("Rectangle", 640, 480);
+
+			// Mats are very memory expensive. Lets reuse this Mat.
+			mat = new Mat();
+			GripPipeline gp = new GripPipeline();
+
+			// This cannot be 'true'. The program will never exit if it is. This lets the robot stop this thread when 
+			//restarting robot code or deploying.
+			
+			while (!Thread.interrupted()) {
+				// Tell the CvSink to grab a frame from the camera and put it
+				// in the source mat.  If there is an error notify the output.
+				if (cvSink.grabFrame(mat) == 0) { 
+					// Send the output the error.
+					outputStream.notifyError(cvSink.getError()); 
+					// skip the rest of the current iteration
+					continue;
+				}
+				// Put a rectangle on the image
+				Imgproc.rectangle(mat, new Point(100, 100), new Point(400, 400),
+						new Scalar(255, 255, 255), 5);
+				// Give the output stream a new image to display
+				outputStream.putFrame(mat);
+				gp.process(mat);
+//				System.out.print("mat: " + mat);
+				mat = gp.filterContoursOutput().get(gp.filterContoursOutput().size()-1);
+//				
+				
+				
+//				for(int x = 0; x <= mat.rows(); x++){
+//					for (int y = 0; y <= mat.cols(); y++) {
+//						mat.get(x, y);
+////					}
 //				}
-//				// Put a rectangle on the image
-//				Imgproc.rectangle(mat, new Point(100, 100), new Point(400, 400),
-//						new Scalar(255, 255, 255), 5);
-//				// Give the output stream a new image to display
-//				outputStream.putFrame(mat);
-//				gp.process(mat);
-//				System.out.print("mat: " + mat);	
-//			}
-//		});  
+		}
+		});  
 //		visionThread.setDaemon(true);
 //		visionThread.start();
 
@@ -122,7 +132,7 @@ public class Robot extends IterativeRobot {
 
 		//scoop = new Scoop(3, counter1, counter2);
 		
-		scoop = new Scoop(0, 1);		
+		scoop = new Scoop(0, 1, 2);		
 		scaler = new Scaler();
 		bucket = new Bucket();
 		
@@ -131,7 +141,7 @@ public class Robot extends IterativeRobot {
 		System.out.println("bucket inst in robot.java");
 		
 		oi = new OI();
-		autonomousCommand = new AutonomousMode(); 
+		autonomousWithoutGyro = new AutonomousWithoutGyro(); 
         left2.changeControlMode(CANTalon.TalonControlMode.Follower);
         right2.changeControlMode(CANTalon.TalonControlMode.Follower);
        // gyro.setSensitivity(kVoltsPerDegreePerSecond);
@@ -169,7 +179,7 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() {
         // schedule the autonomous command (example)
     	//if (the autonomousCommand does not return a null set (is not teleop), then run the autonomousCommand
-    	 autonomousCommand.start();	 
+    	 autonomousWithoutGyro.start();	 
     }
 
     @Override //newer GRIP code
@@ -199,7 +209,7 @@ public class Robot extends IterativeRobot {
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
-       autonomousCommand.cancel();
+    	autonomousWithoutGyro.cancel();
     }
 
     /**

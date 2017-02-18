@@ -19,7 +19,7 @@ public class ScaleDown extends Command{
     // Called just before this Command runs the first time
     protected void initialize() {
     	System.out.println("retract command called");
-    	Robot.scaler.retract();
+    	Robot.scaler.down();
     	
     }
 

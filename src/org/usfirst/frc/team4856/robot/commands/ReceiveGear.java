@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ReceiveGear extends Command {
+public class ReceiveGear extends Command { //when the scoop is going up
 	
     public ReceiveGear() {
         // Use requires() here to declare subsystem dependencies
@@ -18,7 +18,7 @@ public class ReceiveGear extends Command {
     protected void initialize() {
 
     	//Robot.scoop.initializeCounter();
-    	Robot.scoop.up();
+    	Robot.scoop.receive();
     	System.out.println("receive gear command called");
     }
 
@@ -28,13 +28,10 @@ public class ReceiveGear extends Command {
     }
 
 //    // Make this return true when this Command no longer needs to run execute()
-//    protected boolean isFinished() {
-//    	return Robot.scoop.isSwitch1Set() == true && Robot.scoop.isSwitch2Set() == true;
-//    }
     
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return (boolean) !(Robot.scoop.di_up.get());
+    	return (boolean) (Robot.scoop.di_receive.get());
     }
 
     // Called once after isFinished returns true

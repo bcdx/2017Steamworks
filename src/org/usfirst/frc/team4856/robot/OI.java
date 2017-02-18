@@ -5,22 +5,6 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import org.usfirst.frc.team4856.robot.commands.*;
 import org.usfirst.frc.team4856.robot.subsystems.Scaler;
 import org.usfirst.frc.team4856.robot.subsystems.Scoop;
-
-
-
-
-
-//import org.usfirst.frc.team4856.robot.commands.SpikeOn;
-
-//import org.usfirst.frc.team4856.robot.commands.BackwardShooter;
-//import org.usfirst.frc.team4856.robot.commands.Extend;
-import org.usfirst.frc.team4856.robot.commands.SetAngleManually;
-////import org.usfirst.frc.team4856.robot.commands.Extend;
-//import org.usfirst.frc.team4856.robot.commands.SetAngleManually;
-//import org.usfirst.frc.team4856.robot.commands.ForwardShooter;
-//import org.usfirst.frc.team4856.robot.commands.Push;
-//import org.usfirst.frc.team4856.robot.commands.PushandShoot;
-
 import org.usfirst.frc.team4856.robot.commands.ScaleUp;
 import org.usfirst.frc.team4856.robot.commands.ScaleDown;
 
@@ -36,20 +20,20 @@ import edu.wpi.first.wpilibj.Joystick;
 public class OI {
 	//declares variables of Joystick type (i.e. lefStick is an instance of Joystick.)
 	//0, 1, and 2 refer to USB ports
-	public Joystick leftStick = new Joystick(0);
-	public Joystick rightStick = new Joystick(1);
+	public Joystick leftStick = new Joystick(1); //LEFT, RIGHT --> facing the same direction as the robot
+	public Joystick rightStick = new Joystick(0);
 	public Joystick thirdStick = new Joystick(2); 
 
 	public OI() {
-		JoystickButton scoopUp = new JoystickButton (thirdStick, 3);
-		JoystickButton scoopDown = new JoystickButton (thirdStick, 2);
+		JoystickButton scoopReceive = new JoystickButton (thirdStick, 3);
+		JoystickButton scoopPlace = new JoystickButton (thirdStick, 2);
 		JoystickButton scaleUp = new JoystickButton (thirdStick, 5);
-		JoystickButton scaleDown = new JoystickButton (thirdStick, 4);
+		JoystickButton scaleDown = new JoystickButton (thirdStick, 6);
 		JoystickButton servoOpen = new JoystickButton (thirdStick, 9);
 		JoystickButton servoClose = new JoystickButton (thirdStick, 8);
 	
-		scoopUp.whileHeld(new PlaceGear()); 
-		scoopDown.whileHeld(new ReceiveGear());
+		scoopReceive.whileHeld(new PlaceGear()); 
+		scoopPlace.whileHeld(new ReceiveGear());
 		scaleUp.whileHeld(new ScaleUp());
 		scaleDown.whileHeld(new ScaleDown());
 		servoOpen.whenPressed(new OpenServo());

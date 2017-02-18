@@ -16,11 +16,13 @@ public class Bucket extends Subsystem {
 	}
 	
 	public void open() {
-		servo.set(0.3);
+		servo.set(0.05);
+// DONT CHANGE THESE ANGLES
 	}
 	
 	public void close() {
-		servo.set(0);
+		servo.set(0.3);
+//DONT CHANGE THESE ANGLES
 	}
 	
 	public void stop() {

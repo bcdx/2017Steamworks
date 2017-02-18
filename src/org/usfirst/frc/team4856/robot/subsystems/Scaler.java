@@ -17,14 +17,14 @@ public class Scaler extends Subsystem {
 		scalerMotor = new Victor(3);
 	}
 	
-   public void extend() {
-	   scalerMotor.set(0.3);
+   public void up() {
+	   scalerMotor.set(0.4);
 	   System.out.println("extend method called");
    }
  
 	
-   public void retract () {
-	   scalerMotor.set(-0.3);
+   public void down () {
+	   scalerMotor.set(-0.4);
 	   System.out.println("retract method called");
 	}
    
