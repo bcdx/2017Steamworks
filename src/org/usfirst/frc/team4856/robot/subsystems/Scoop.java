@@ -50,7 +50,7 @@ public class Scoop extends Subsystem {
 	 
 	 public void place() {
 //		 if (!di_place.get()){
-			 scoopMotor.set(0.8);
+			 scoopMotor.set(-0.8);
 //			 System.out.println("receive gear method called");
 //			 System.out.println("switch" + di_place.get());
 //		 }

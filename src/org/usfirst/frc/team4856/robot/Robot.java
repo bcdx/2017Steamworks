@@ -30,11 +30,12 @@ public class Robot extends IterativeRobot {
 	public static Scaler scaler;
 	public static Scoop scoop;
 	public static Bucket bucket;
+	public static AnalogGyro gyro;
 	
-	public static CANTalon left1= new CANTalon(1);
-	public static CANTalon left2= new CANTalon(2);
-	public static CANTalon right1= new CANTalon(3);
-	public static CANTalon right2= new CANTalon(4);
+	public static CANTalon left1= new CANTalon(3);
+	public static CANTalon left2= new CANTalon(4);
+	public static CANTalon right1= new CANTalon(1);
+	public static CANTalon right2= new CANTalon(2);
 	
 	Thread visionThread;
 	
@@ -43,13 +44,10 @@ public class Robot extends IterativeRobot {
 	Joystick thirdstick = new Joystick(2);
 	
 //	//Gyro code - Reference Sample Project
-//
+//	// gyro value of 360 is set to correspond to one full revolution
 	private static final double kAngleSetpoint = 0.0;
 	private static final double kP = 0.005; // proportional turning constant
-//
-//	// gyro calibration constant, may need to be adjusted;
-//	// gyro value of 360 is set to correspond to one full revolution
-	private static final double kVoltsPerDegreePerSecond = 0.0128;
+	private static final double kVoltsPerDegreePerSecond = 0.0128;  //gyro calibration constant, may need to be adjusted;
 	private static final int kLeftMotorPort = 0;
 	private static final int kRightMotorPort = 1;
 	private static final int kGyroPort = 0;
@@ -58,7 +56,6 @@ public class Robot extends IterativeRobot {
 //	private RobotDrive myRobot = new RobotDrive(kLeftMotorPort, kRightMotorPort);
 //	private AnalogGyro gyro = new AnalogGyro(kGyroPort);
 //	private Joystick joystick = new Joystick(kJoystickPort);
-
 
 	Mat mat; //camera
 
@@ -79,8 +76,7 @@ public class Robot extends IterativeRobot {
     	visionThread = new Thread(() -> {
 			// Get the Axis camera from CameraServer
 			AxisCamera camera = CameraServer.getInstance().addAxisCamera("axis-accc8e2708a3.local");
-			// Set the resolution
-			camera.setResolution(640, 480);
+			camera.setResolution(640, 480); // Set the resolution
 
 			// Get a CvSink. This will capture Mats from the camera
 			CvSink cvSink = CameraServer.getInstance().getVideo();
@@ -111,40 +107,35 @@ public class Robot extends IterativeRobot {
 				gp.process(mat);
 //				System.out.print("mat: " + mat);
 				mat = gp.filterContoursOutput().get(gp.filterContoursOutput().size()-1);
-//				
-				
-				
+
 //				for(int x = 0; x <= mat.rows(); x++){
 //					for (int y = 0; y <= mat.cols(); y++) {
 //						mat.get(x, y);
 ////					}
 //				}
-		}
+			}
 		});  
 //		visionThread.setDaemon(true);
 //		visionThread.start();
-
-		//LimitSwitch limitswitch1 = new LimitSwitch(1);
-	//	LimitSwitch limitswitch2 = new LimitSwitch(2);
-		
-//		Counter counter1 = limitswitch1.counter;
-//		Counter counter2 = limitswitch2.counter;
-
-		//scoop = new Scoop(3, counter1, counter2);
 		
 		scoop = new Scoop(0, 1, 2);		
 		scaler = new Scaler();
 		bucket = new Bucket();
+		//gyro = new AnalogGyro(0);
+
+		//gyro = new AnalogGyro(1);
 		
 		System.out.println("scaler inst in robot.java");
 		System.out.println("scoop inst in robot.java");
 		System.out.println("bucket inst in robot.java");
-		
+		//int angle = (int) gyro.getAngle(); 
+		//System.out.println("Angle is " + angle);
+				
 		oi = new OI();
 		autonomousWithoutGyro = new AutonomousWithoutGyro(); 
         left2.changeControlMode(CANTalon.TalonControlMode.Follower);
         right2.changeControlMode(CANTalon.TalonControlMode.Follower);
-       // gyro.setSensitivity(kVoltsPerDegreePerSecond);
+        // gyro.setSensitivity(kVoltsPerDegreePerSecond);
 
 //		double[] defaultValue = new double[0];
 //		while (true) {
