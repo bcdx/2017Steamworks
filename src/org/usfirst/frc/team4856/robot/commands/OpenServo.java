@@ -25,12 +25,12 @@ public class OpenServo extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	System.out.println(Robot.bucket.servo.get());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-      return false;
-    	//return Robot.bucket.servo.get() == 1.0;
+      return Robot.bucket.servo.get() > 0.3445;
     }
 
     // Called once after isFinished returns true

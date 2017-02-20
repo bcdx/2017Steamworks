@@ -23,17 +23,15 @@ public class CloseServo extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	
+    	System.out.println(Robot.bucket.servo.get());
+ 
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	
-//    	if (Robot.bucket.servo.get() == 0.5){
-//    		return true;
-//    	}
-//    	else {
-    		return false; 
-    	//}
+    	return  Robot.bucket.servo.get() < 0.155; 
+   
     }
 
     // Called once after isFinished returns true

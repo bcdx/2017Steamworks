@@ -8,7 +8,7 @@ public class Bucket extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
-	private Servo servo;
+	public Servo servo;
 	
 	public Bucket() {
 		super();
@@ -16,12 +16,12 @@ public class Bucket extends Subsystem {
 	}
 	
 	public void open() {
-		servo.set(0.05);
+		servo.set(0.35);
 // DONT CHANGE THESE ANGLES
 	}
 	
 	public void close() {
-		servo.set(0.3);
+		servo.set(0.15);
 //DONT CHANGE THESE ANGLES
 	}
 	

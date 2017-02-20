@@ -39,25 +39,39 @@ public class AutonomousWithoutGyro extends CommandGroup {
     protected void execute() {	
     	new CloseServo(); //to keep the servo open during autonomous mode at all times
     	
-    	while(timer.get() < 1.5){ //move forward
+    	while(timer.get() < 1.10){ //move forward
     		left1.set(0.5);
     		left2.set(0.5);
     		right1.set(-0.5);
     		right2.set(-0.5);
     	}
     	
-    	while(timer.get() > 1.5 && timer.get() < 1.80){ //move forward
+    	while(timer.get() > 1.10 && timer.get() < 1.45){ //move forward
     		left1.set(-0.5);
     		left2.set(-0.5);
     		right1.set(-0.5);
     		right2.set(-0.5);
     	}
     	
-    	while(timer.get() > 1.80 && timer.get() < 3){ //move forward
-    		left1.set(0.2);
-    		left2.set(0.2);
-    		right1.set(-0.2);
-    		right2.set(-0.2);
+    	while(timer.get() > 1.45 && timer.get() < 4.0){ //move forward
+    		left1.set(0.3);
+    		left2.set(0.3);
+    		right1.set(-0.3);
+    		right2.set(-0.3);
+    	}
+    	
+    	while(timer.get() > 4.0 && timer.get() < 4.1){ //move forward
+    		left1.set(0.3);
+    		left2.set(0.3);
+    		right1.set(0.3);
+    		right2.set(0.3);
+    	}
+    	
+    	while(timer.get() > 4.1 && timer.get() < 4.30){ //move forward
+    		left1.set(0.3);
+    		left2.set(0.3);
+    		right1.set(-0.3);
+    		right2.set(-0.3);
     	}
     	
     		left1.set(0);
