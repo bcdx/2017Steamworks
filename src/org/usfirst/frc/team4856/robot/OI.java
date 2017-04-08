@@ -25,19 +25,21 @@ public class OI {
 	public Joystick thirdStick = new Joystick(2); 
 
 	public OI() {
-		JoystickButton scoopReceive = new JoystickButton (thirdStick, 3);
-		JoystickButton scoopPlace = new JoystickButton (thirdStick, 4);
+//		JoystickButton scoopReceive = new JoystickButton (thirdStick, 3);
+//		JoystickButton scoopPlace = new JoystickButton (thirdStick, 4);
 		JoystickButton scaleUp = new JoystickButton (thirdStick, 5);
 		JoystickButton scaleDown = new JoystickButton (thirdStick, 6);
 		JoystickButton servoOpen = new JoystickButton (thirdStick, 7);
 		JoystickButton servoClose = new JoystickButton (thirdStick, 8);
+		JoystickButton scaleStop = new JoystickButton(thirdStick,3);
 	
-		scoopReceive.whileHeld(new PlaceGear()); 
-		scoopPlace.whileHeld(new ReceiveGear());
+//		scoopReceive.whileHeld(new PlaceGear()); 
+//		scoopPlace.whileHeld(new ReceiveGear());
 		scaleUp.whileHeld(new ScaleUp());
 		scaleDown.whileHeld(new ScaleDown());
 		servoOpen.whenPressed(new OpenServo());
 		servoClose.whenPressed(new CloseServo());
+		scaleStop.whenPressed(new ScalerStop());
 		
 	}
 	
