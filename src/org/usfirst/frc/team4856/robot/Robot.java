@@ -66,7 +66,7 @@ public class Robot extends IterativeRobot {
 
 	public static Command autonomousWithoutGyro;
 	
-    /**
+    /**+
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
@@ -217,11 +217,11 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
         double leftAxis = leftstick.getY();
-        left1.set(1*leftAxis);
+        left1.set(-1*leftAxis);
         left2.changeControlMode(CANTalon.TalonControlMode.Follower);
         left2.set(left1.getDeviceID());
         double rightAxis = rightstick.getY();
-        right1.set(-1*rightAxis);
+        right1.set(1*rightAxis);
         right2.changeControlMode(CANTalon.TalonControlMode.Follower);
         right2.set(right1.getDeviceID());
         

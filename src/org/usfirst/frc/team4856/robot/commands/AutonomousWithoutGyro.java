@@ -33,56 +33,41 @@ public class AutonomousWithoutGyro extends CommandGroup {
     protected void initialize() {
     	timer.reset();
     	timer.start();
-    	gyro.reset();
-    	
+    	gyro.reset(); 
     }
     
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {	
+    	
     	new CloseServo(); //to keep the servo open during autonomous mode at all times
     	
     	int angle = (int) gyro.getAngle();
-    	System.out.println("gyro angle: " + angle);
-    	Timer.delay(3);
+    	System.out.println("gyro angle: " + gyro.getAngle());
+    	//Timer.delay(3);
     	
     	left1.set(0.5);
     	left2.set(0.5);
    		right1.set(-0.5);
    		right2.set(-0.5);
-   		Timer.delay(1.10);  //move forward (left and right position)
- 
-   		
-   		/*
+   		Timer.delay(2.8);  //move forward (left and right position)
+    	
    		left1.set(0.5);
     	left2.set(0.5);
     	right1.set(0.5);
     	right2.set(0.5);
-    	Timer.delay(0.35);  //turn right (left position)
-    	System.out.println("gyro: " + angle);
-    	*/
+    	Timer.delay(0.5);  //turn left (right position)
+    	System.out.println("gyro angle: " + gyro.getAngle());
+    	//Timer.delay(3);
     	
-   		left1.set(-0.5);
-    	left2.set(-0.5);
+    	left1.set(0.5);
+    	left2.set(0.5);
     	right1.set(-0.5);
     	right2.set(-0.5);
-    	Timer.delay(0.35);  //turn left (right position)
-    	System.out.println("gyro: " + angle);
-    	
-    	left1.set(0.3);
-    	left2.set(0.3);
-    	right1.set(-0.3);
-    	right2.set(-0.3);
-    	Timer.delay(2.55);   //move forward (left and right position)
-    	System.out.println("gyro: " + angle);
+    	Timer.delay(1.5);   //move forward (left and right position)
+    	System.out.println("gyro angle: " + gyro.getAngle());
+    	Timer.delay(3);
     	
     	/*
-   		left1.set(-0.3);
-    	left2.set(-0.3);
-    	right1.set(-0.3);
-    	right2.set(-0.3);
-    	Timer.delay(0.1);  //align robot (left position)
-    	System.out.println("gyro: " + angle);
-    	*/
     	
     	left1.set(0.3);
     	left2.set(0.3);
@@ -96,6 +81,7 @@ public class AutonomousWithoutGyro extends CommandGroup {
     	right1.set(-0.3);
     	right2.set(-0.3);
     	Timer.delay(0.2); //move forward (left and right position)
+    	*/
     	
     	/*
     	// placing gear 

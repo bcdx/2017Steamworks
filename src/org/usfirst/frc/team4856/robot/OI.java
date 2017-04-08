@@ -26,10 +26,10 @@ public class OI {
 
 	public OI() {
 		JoystickButton scoopReceive = new JoystickButton (thirdStick, 3);
-		JoystickButton scoopPlace = new JoystickButton (thirdStick, 2);
+		JoystickButton scoopPlace = new JoystickButton (thirdStick, 4);
 		JoystickButton scaleUp = new JoystickButton (thirdStick, 5);
 		JoystickButton scaleDown = new JoystickButton (thirdStick, 6);
-		JoystickButton servoOpen = new JoystickButton (thirdStick, 9);
+		JoystickButton servoOpen = new JoystickButton (thirdStick, 7);
 		JoystickButton servoClose = new JoystickButton (thirdStick, 8);
 	
 		scoopReceive.whileHeld(new PlaceGear()); 
